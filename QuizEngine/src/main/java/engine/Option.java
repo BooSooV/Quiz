@@ -20,4 +20,9 @@ public class Option {
     }
     public Option() {
     }
+
+    @Override
+    public String toString() {
+        return String.format(option);
+    }
 }

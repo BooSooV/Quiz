@@ -28,8 +28,7 @@ import java.util.regex.Pattern;
 @RestController
 public class TaskController {
     private AnsToUser ansToUser = new AnsToUser();
-    public ArrayList<Quiz> allQuizzes = new ArrayList();
-    public UserService userServ = new UserService();
+    //public UserService userServ = new UserService();
 
     @Autowired
     QuizService quizService;
@@ -71,7 +70,16 @@ public class TaskController {
 
     //Add quiz to site
     @PostMapping(path = "/api/quizzes")
-    public QuizToUser addQuiz(@RequestBody QuizFromUser quizFromUser){
+    public QuizForStore addQuiz(@RequestBody QuizForStore quizForStore){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if(quizForStore.isCorrect()) {
+            quizForStore.creator = auth.getName();
+            quizService.SaveOrUpdateQuiz(quizForStore);
+            System.out.println(quizForStore);
+            return quizForStore;
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+/*
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if(quizFromUser.title != null && quizFromUser.text != null) {
             if(!quizFromUser.title.equals("") && !quizFromUser.text.equals("")) {
@@ -82,7 +90,13 @@ public class TaskController {
                 }
             }
         }
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+
+  "title": "Tea drinks",
+  "text": "Select only tea drinks.",
+  "options": ["black tea","green tea","Cappuccino","Sprite"],
+  "answer": [0,1]
+
+        */
     }
 
     //Get Quiz by id

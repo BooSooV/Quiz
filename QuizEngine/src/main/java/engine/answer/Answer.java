@@ -13,13 +13,18 @@ public class Answer {
     public long answerId;
 
     @Column
-    public String answer;
+    public Integer answer;
 
-    public Answer(String answer) {
+    public Answer(Integer answer) {
         this.answer = answer;
     }
 
     public Answer() {
+    }
+
+    @Override
+    public String toString() {
+        return String.format(answer.toString());
     }
 }
 
