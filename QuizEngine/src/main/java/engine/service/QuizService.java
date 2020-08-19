@@ -1,7 +1,7 @@
 package engine.service;
 
 import engine.quiz.QuizForStore;
-import engine.quiz.QuizToUser;
+//import engine.quiz.QuizToUser;
 import engine.repos.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -38,7 +38,12 @@ public class QuizService {
         return  quizzes;
     }
 
-    public QuizToUser getQuizById(int id) {
+    public QuizForStore getQuizById(int id) {
+        QuizForStore quizForStore = quizRepository.findById(id).get();
+        return quizForStore;
+    }
+    /*
+        public QuizToUser getQuizById(int id) {
         QuizToUser quizToUser = new QuizToUser();
         quizToUser.id = quizRepository.findById(id).get().id;
         quizToUser.text = quizRepository.findById(id).get().text;
@@ -49,6 +54,7 @@ public class QuizService {
 
         return quizToUser;
     }
+     */
 
     public ArrayList getAnswerById(int id) {
         ArrayList answerFromRepository = new ArrayList<>();

@@ -101,7 +101,7 @@ public class TaskController {
 
     //Get Quiz by id
     @GetMapping(path = "/api/quizzes/{idS}")
-    public QuizToUser getQuiz(@PathVariable String idS){
+    public QuizForStore getQuiz(@PathVariable String idS){
         try {
             Integer id = Integer.parseInt(idS);
             //QuizToUser quizToUser = new QuizToUser(id+1, allQuizzes.get(id).title, allQuizzes.get(id).text, allQuizzes.get(id).options);
