@@ -2,15 +2,13 @@ package engine.quiz;
 
 import engine.answer.Answer;
 import engine.Option;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class QuizForStore {
+public class Quiz {
 
     @Id
     @GeneratedValue
@@ -27,7 +25,7 @@ public class QuizForStore {
     @JoinColumn()
     public List<Answer> answers = new ArrayList<>();
 
-    public QuizForStore(String title, String text, List options, List answers) {
+    public Quiz(String title, String text, List options, List answers) {
         this.title = title;
         this.text = text;
         this.creator = null;
@@ -35,7 +33,7 @@ public class QuizForStore {
         this.options = answers;
     }
 
-    public QuizForStore(String title, String text, String creator, List options, List answers) {
+    public Quiz(String title, String text, String creator, List options, List answers) {
         this(title, text, options, answers);
         this.creator = creator;
     }
@@ -54,7 +52,7 @@ public class QuizForStore {
         }
     }
 */
-    public QuizForStore() {
+    public Quiz() {
 
     }
 

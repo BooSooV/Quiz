@@ -3,7 +3,6 @@ package engine.controller;
 
 import engine.*;
 import engine.answer.AnsToUser;
-import engine.answer.AnswerFromUser;
 import engine.config.SpringSecurityConfig;
 import engine.pagenation.CompletedQuizPagenation;
 import engine.pagenation.QuizPagenation;
@@ -21,6 +20,8 @@ import org.springframework.web.server.ResponseStatusException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Hashtable;
+import java.util.List;
 import java.util.regex.Pattern;
 
 
@@ -70,13 +71,11 @@ public class TaskController {
 
     //Add quiz to site
     @PostMapping(path = "/api/quizzes")
-    public QuizForStore addQuiz(@RequestBody QuizForStore quizForStore){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if(quizForStore.isCorrect()) {
-            quizForStore.creator = auth.getName();
-            quizService.SaveOrUpdateQuiz(quizForStore);
-            System.out.println(quizForStore);
-            return quizForStore;
+    public Quiz addQuiz(@RequestBody Quiz quiz){
+        if(quiz.isCorrect()) {
+            quiz.creator = SecurityContextHolder.getContext().getAuthentication().getName();
+            quizService.SaveOrUpdateQuiz(quiz);
+            return quiz;
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 /*
@@ -101,15 +100,16 @@ public class TaskController {
 
     //Get Quiz by id
     @GetMapping(path = "/api/quizzes/{idS}")
-    public QuizForStore getQuiz(@PathVariable String idS){
+    public Quiz getQuiz(@PathVariable String idS){
         try {
-            Integer id = Integer.parseInt(idS);
-            //QuizToUser quizToUser = new QuizToUser(id+1, allQuizzes.get(id).title, allQuizzes.get(id).text, allQuizzes.get(id).options);
-            return quizService.getQuizById(id);
+            //Integer id = Integer.parseInt(idS);
+            Quiz quiz = quizService.getQuizById(Integer.parseInt(idS));
+            quiz.answers = null;
+            return quiz;
         }
-        catch (Exception exep) {
+        catch (Exception excep) {
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Quiz Not Found", exep);
+                    HttpStatus.NOT_FOUND, "Quiz Not Found", excep);
         }
     }
 
@@ -129,8 +129,12 @@ public class TaskController {
 
     //Solving a Quiz
     @PostMapping(path = "/api/quizzes/{id}/solve")
-    public AnsToUser addTask(@PathVariable Integer id, @RequestBody AnswerFromUser answer){
-        ArrayList<Integer> answerFromRepository = new ArrayList<>();
+    //public AnsToUser solveQuiz(@PathVariable Integer id, @RequestBody AnswerFromUser answer){
+    public AnsToUser solveQuiz(@PathVariable Integer id, @RequestBody Hashtable answer){
+
+        //System.out.println(answer.get("answer").getClass());
+
+        ArrayList<Integer> answerFromRepository;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user;
         LocalDateTime now = LocalDateTime.now();
@@ -138,9 +142,9 @@ public class TaskController {
         try {
             answerFromRepository = quizService.getAnswerById(id);
             Collections.sort(answerFromRepository);
-            Collections.sort(answer.answer);
+            Collections.sort((List)answer.get("answer"));
 
-            boolean equalsAnswers = answerFromRepository.toString().equals(answer.answer.toString());
+            boolean equalsAnswers = answerFromRepository.toString().equals(answer.get("answer").toString());
 
             if (equalsAnswers) {
                 ansToUser.success = true;
@@ -161,6 +165,7 @@ public class TaskController {
                     HttpStatus.NOT_FOUND, "Quiz Not Found", exep);
         }
 
+        //return new AnsToUser();
     }
 
     //Delete Quiz by id

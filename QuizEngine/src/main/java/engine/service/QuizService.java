@@ -1,6 +1,6 @@
 package engine.service;
 
-import engine.quiz.QuizForStore;
+import engine.quiz.Quiz;
 //import engine.quiz.QuizToUser;
 import engine.repos.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -19,28 +20,26 @@ public class QuizService {
     @Autowired
     QuizRepository quizRepository;
 
-    public Page<QuizForStore> getAllQuizzesPaging(Integer pageNo, Integer pageSize, String sortBy)
+    public Page<Quiz> getAllQuizzesPaging(Integer pageNo, Integer pageSize, String sortBy)
     {
         Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
-        Page<QuizForStore> pagedResult = quizRepository.findAll(paging);
+        Page<Quiz> pagedResult = quizRepository.findAll(paging);
         return pagedResult;
     }
 
-    public int SaveOrUpdateQuiz(QuizForStore quiz) {
-        QuizForStore quizForStoreFeedback;
-        quizForStoreFeedback = quizRepository.save(quiz);
-        return quizForStoreFeedback.id;
+    public void SaveOrUpdateQuiz(Quiz quiz) {
+        quizRepository.save(quiz);
     }
 
-    public List<QuizForStore> GetAllQuizzes() {
-        List<QuizForStore> quizzes = new ArrayList<QuizForStore>();
+    public List<Quiz> GetAllQuizzes() {
+        List<Quiz> quizzes = new ArrayList<Quiz>();
         quizRepository.findAll().forEach(quiz -> quizzes.add(quiz));
         return  quizzes;
     }
 
-    public QuizForStore getQuizById(int id) {
-        QuizForStore quizForStore = quizRepository.findById(id).get();
-        return quizForStore;
+    public Quiz getQuizById(int id) {
+        Quiz quiz = quizRepository.findById(id).get();
+        return quiz;
     }
     /*
         public QuizToUser getQuizById(int id) {
@@ -62,7 +61,7 @@ public class QuizService {
         for (var quizAnswers : quizRepository.findById(id).get().answers) {
             answerFromRepository.add(quizAnswers.answer);
         }
-
+        Collections.sort(answerFromRepository);
         return answerFromRepository;
     }
 

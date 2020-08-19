@@ -1,6 +1,6 @@
 package engine.pagenation;
 
-import engine.quiz.QuizForStore;
+import engine.quiz.Quiz;
 //import engine.quiz.QuizToUser;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,9 +20,9 @@ public class QuizPagenation {
     public int size;
     public boolean empty;
     public Pageable pageable;
-    public List<QuizForStore> content = new ArrayList<>();
+    public List<Quiz> content = new ArrayList<>();
 
-    public QuizPagenation(Page<QuizForStore> page) {
+    public QuizPagenation(Page<Quiz> page) {
         this.totalPages = page.getTotalPages();
         this.totalElements = page.getTotalElements();
         this.last = page.isLast();
@@ -34,8 +34,8 @@ public class QuizPagenation {
         this.empty = page.isEmpty();
         this.pageable = page.getPageable();
 
-        List<QuizForStore> allQuizzesFromBase = page.getContent();
-        for (QuizForStore quiz : allQuizzesFromBase) {
+        List<Quiz> allQuizzesFromBase = page.getContent();
+        for (Quiz quiz : allQuizzesFromBase) {
             ArrayList<String> optionsForUser = new ArrayList();
             for (var quizOptions : quiz.options) {
                 optionsForUser.add(quizOptions.option);
