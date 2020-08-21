@@ -55,7 +55,7 @@ public class QuizService {
     }
      */
 
-    public ArrayList getAnswerById(int id) {
+    public ArrayList getSortAnswerById(int id) {
         ArrayList answerFromRepository = new ArrayList<>();
 
         for (var quizAnswers : quizRepository.findById(id).get().answers) {

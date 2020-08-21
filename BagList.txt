@@ -1,0 +1,4 @@
+bug:	not correct time and date sorting, 3: > 35(for string of char it correct, but not for time) 
+            "completedAt": "2020-8-21T13:3:57.46320200"
+            "completedAt": "2020-8-21T13:35:46.782910200"
+solve: 	add 0 befor single number

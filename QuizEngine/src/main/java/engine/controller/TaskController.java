@@ -18,11 +18,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 
 
@@ -130,34 +126,25 @@ public class TaskController {
 
     //Solving a Quiz
     @PostMapping(path = "/api/quizzes/{id}/solve")
-    public AnsToUser solveQuiz(@PathVariable Integer id, @RequestBody Hashtable answer){
+    public AnsToUser solveQuiz(@PathVariable Integer id, @RequestBody Hashtable answerFromUser){
 
         ArrayList<Integer> answerFromRepository;
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user;
-
         try {
-            answerFromRepository = quizService.getAnswerById(id);
-            Collections.sort(answerFromRepository);
-            Collections.sort((List)answer.get("answer"));
-
-            boolean equalsAnswers = answerFromRepository.toString().equals(answer.get("answer").toString());
-
-            if (equalsAnswers) {
-                String userEmail = auth.getName();
-                user = userService.getUserByEmail(userEmail);
-                user.completed.add(new CompletedQuiz(id));
-                userService.SaveUser(user);
-                return new AnsToUser(true);
-            } else {
-                return new AnsToUser(false);
-            }
+            answerFromRepository = quizService.getSortAnswerById(id);
         }
-        catch (Exception excep) {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Quiz Not Found", excep);
+        catch (Exception excep) { throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Quiz Not Found", excep); }
+
+        Collections.sort((List)answerFromUser.get("answer"));
+
+        if (answerFromUser.get("answer").equals(answerFromRepository)) {
+            userService.addCompleteQuiz(id, SecurityContextHolder.getContext().getAuthentication().getName());
+            return new AnsToUser(true);
+        } else {
+            return new AnsToUser(false);
         }
     }
+
+
 
     //Delete Quiz by id
     @DeleteMapping(path = "/api/quizzes/{idS}")

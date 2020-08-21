@@ -65,5 +65,14 @@ public class UserService {
         }
         return new User("null", "null");
     }
+
+    public boolean addCompleteQuiz(Integer idQuiz, String userEmail) {
+
+        User user = this.getUserByEmail(userEmail);
+        user.completed.add(new CompletedQuiz(idQuiz));
+        this.SaveUser(user);
+
+        return true;
+    }
 }
 
