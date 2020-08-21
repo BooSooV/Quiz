@@ -10,15 +10,15 @@ public class CompletedQuiz {
 
     @Id
     @GeneratedValue
-    public long quizId;
+    public long id;
 
     @Column
-    public int id;
+    public int quizId;
     @Column
     public String completedAt;
 
-    public CompletedQuiz(int id, String completedAt) {
-        this.id = id;
+    public CompletedQuiz(int quizId, String completedAt) {
+        this.quizId = quizId;
         this.completedAt = completedAt;
     }
     public CompletedQuiz() {
