@@ -1,7 +1,7 @@
 package engine.service;
 
 import engine.User;
-import engine.quiz.CompletedQuiz;
+import engine.compleatedQuiz.CompletedQuiz;
 import engine.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

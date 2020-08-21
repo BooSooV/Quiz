@@ -1,8 +1,5 @@
 package engine.quiz;
 
-import engine.answer.Answer;
-import engine.Option;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,21 +34,7 @@ public class Quiz {
         this(title, text, options, answers);
         this.creator = creator;
     }
-/*
-    public QuizForStore(QuizFromUser quizFromUser, String creator) {
-        this.title = quizFromUser.title;
-        this.text = quizFromUser.text;
-        this.creator = creator;
 
-        for (var option : quizFromUser.options) {
-            this.options.add(new Option(option.toString()));
-        }
-        for (Answer answer : quizFromUser.answer) {
-            this.answers.add(answer);
-            //this.answers.add(new Answer(answer.toString()));
-        }
-    }
-*/
     public Quiz() {
 
     }
@@ -77,6 +60,4 @@ public class Quiz {
                 "options: " + options + "\n"+
                 "answers: " + answers);
     }
-
-
 }

@@ -4,9 +4,10 @@ package engine.controller;
 import engine.*;
 import engine.answer.AnsToUser;
 import engine.config.SpringSecurityConfig;
-import engine.pagenation.CompletedQuizPagenation;
-import engine.pagenation.QuizPagenation;
+import engine.compleatedQuiz.CompletedQuizPagenation;
+import engine.quiz.QuizPagenation;
 import engine.quiz.*;
+import engine.compleatedQuiz.CompletedQuiz;
 import engine.service.QuizService;
 import engine.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ import java.util.regex.Pattern;
 
 @RestController
 public class TaskController {
-    private AnsToUser ansToUser = new AnsToUser();
+    //private AnsToUser ansToUser = new AnsToUser();
     //public UserService userServ = new UserService();
 
     @Autowired
@@ -129,15 +130,11 @@ public class TaskController {
 
     //Solving a Quiz
     @PostMapping(path = "/api/quizzes/{id}/solve")
-    //public AnsToUser solveQuiz(@PathVariable Integer id, @RequestBody AnswerFromUser answer){
     public AnsToUser solveQuiz(@PathVariable Integer id, @RequestBody Hashtable answer){
-
-        //System.out.println(answer.get("answer").getClass());
 
         ArrayList<Integer> answerFromRepository;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user;
-        LocalDateTime now = LocalDateTime.now();
 
         try {
             answerFromRepository = quizService.getAnswerById(id);
@@ -147,25 +144,19 @@ public class TaskController {
             boolean equalsAnswers = answerFromRepository.toString().equals(answer.get("answer").toString());
 
             if (equalsAnswers) {
-                ansToUser.success = true;
-                ansToUser.feedback = "Congratulations, you're right!";
                 String userEmail = auth.getName();
                 user = userService.getUserByEmail(userEmail);
-                user.completed.add(new CompletedQuiz(id,(now.getYear() + "-" + now.getMonthValue() + "-" + now.getDayOfMonth() + "T" + now.getHour() + ":" + now.getMinute() + ":" + now.getSecond() + "." + now.getNano()).toString()));
+                user.completed.add(new CompletedQuiz(id));
                 userService.SaveUser(user);
-                return ansToUser;
+                return new AnsToUser(true);
             } else {
-                ansToUser.success = false;
-                ansToUser.feedback = "Wrong answer! Please, try again.";
-                return ansToUser;
+                return new AnsToUser(false);
             }
         }
-        catch (Exception exep) {
+        catch (Exception excep) {
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Quiz Not Found", exep);
+                    HttpStatus.NOT_FOUND, "Quiz Not Found", excep);
         }
-
-        //return new AnsToUser();
     }
 
     //Delete Quiz by id

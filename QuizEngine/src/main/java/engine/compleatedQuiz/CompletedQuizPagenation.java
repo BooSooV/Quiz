@@ -1,6 +1,6 @@
-package engine.pagenation;
+package engine.compleatedQuiz;
 
-import engine.quiz.CompletedQuiz;
+import engine.compleatedQuiz.CompletedQuiz;
 //import engine.quiz.CompletedQuizForUser;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

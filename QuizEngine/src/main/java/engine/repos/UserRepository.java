@@ -1,6 +1,6 @@
 package engine.repos;
 
-import engine.quiz.CompletedQuiz;
+import engine.compleatedQuiz.CompletedQuiz;
 import engine.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

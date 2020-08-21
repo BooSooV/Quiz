@@ -1,4 +1,4 @@
-package engine.answer;
+package engine.quiz;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

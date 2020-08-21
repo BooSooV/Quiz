@@ -1,6 +1,6 @@
 package engine;
 
-import engine.quiz.CompletedQuiz;
+import engine.compleatedQuiz.CompletedQuiz;
 
 import javax.persistence.*;
 import java.util.ArrayList;
