@@ -25,4 +25,16 @@ dependencies {
 
     implementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     implementation 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+
+    //implementation 'io.rest-assured:rest-assured:4.3.1'
+    //implementation 'io.rest-assured:rest-assured:3.1.0'
+    //testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.3.3.RELEASE'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
 }

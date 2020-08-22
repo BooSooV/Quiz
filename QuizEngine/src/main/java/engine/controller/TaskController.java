@@ -111,8 +111,6 @@ public class TaskController {
     }
 
 
-
-
     @GetMapping(path = "/api/quizzes")
     public QuizPagenation getAllQuizzesPaging(@RequestParam int page){
         QuizPagenation quizPagenation = new QuizPagenation(quizService.getAllQuizzesPaging(page, 10, "id"));
@@ -120,20 +118,15 @@ public class TaskController {
     }
 
 
-
-
-
-
     //Solving a Quiz
     @PostMapping(path = "/api/quizzes/{id}/solve")
     public AnsToUser solveQuiz(@PathVariable Integer id, @RequestBody Hashtable answerFromUser){
-
         ArrayList<Integer> answerFromRepository;
+
         try {
             answerFromRepository = quizService.getSortAnswerById(id);
         }
         catch (Exception excep) { throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Quiz Not Found", excep); }
-
         Collections.sort((List)answerFromUser.get("answer"));
 
         if (answerFromUser.get("answer").equals(answerFromRepository)) {
@@ -145,13 +138,13 @@ public class TaskController {
     }
 
 
-
     //Delete Quiz by id
     @DeleteMapping(path = "/api/quizzes/{idS}")
     public ResponseStatusException deleteQuiz(@PathVariable String idS)  throws Exception {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String creatorAuth = auth.getName();
         Integer id = Integer.parseInt(idS);
-
+// its should be in service
         try {
             quizService.getQuizById(id);
         }
@@ -160,21 +153,20 @@ public class TaskController {
         }
 
         String creatorBase = quizService.getCreatorById(id);
-        String creatorAuth = auth.getName();
+
         if((creatorBase).equals(creatorAuth)) {
             quizService.deleteQuizById(id);
             throw new ResponseStatusException(HttpStatus.NO_CONTENT);
         } else {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
+        //__________________________
     }
 
 
     @GetMapping(path = "/api/quizzes/completed")
     public CompletedQuizPagenation getAllCompletedQuiz(@RequestParam int page){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String creatorAuth = auth.getName();
-        CompletedQuizPagenation completedQuizPagenation = new CompletedQuizPagenation(userService.getUsersSolvedQuizzesPaging(creatorAuth, page, 10, "completed.completedAt"));
-        return completedQuizPagenation;
+        String creator = SecurityContextHolder.getContext().getAuthentication().getName();
+        return new CompletedQuizPagenation(userService.getUsersSolvedQuizzesPaging(creator, page, 10, "completed.completedAt"));
     }
 }
