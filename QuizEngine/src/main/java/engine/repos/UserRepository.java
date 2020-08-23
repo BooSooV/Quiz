@@ -10,7 +10,6 @@ import org.springframework.data.repository.query.Param;
 
 
 public interface UserRepository extends PagingAndSortingRepository<User, Integer> {
-
     //@Query("select child from Parent p inner join p.childs child where p = :parent")
     //public Page<Child> findBy(@Param("parent") Parent parent, Pageable pageable);
 

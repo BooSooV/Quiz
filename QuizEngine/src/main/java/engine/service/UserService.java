@@ -71,7 +71,7 @@ public class UserService {
         User user = this.getUserByEmail(userEmail);
         user.completed.add(new CompletedQuiz(idQuiz));
         this.SaveUser(user);
-
+        System.out.println(user.id);
         return true;
     }
 }
