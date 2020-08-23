@@ -40,8 +40,7 @@ public class TestQuizEngine {
     public void contexLoads() throws Exception {
         this.mockMvc.perform(get("/api/quizzes/2"))
                 .andDo(print())
-                .andExpect(status().isOk());
-                //.andExpect(content().string(containsString("Hello, World")));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("\"id\":2")));
     }
-
 }
