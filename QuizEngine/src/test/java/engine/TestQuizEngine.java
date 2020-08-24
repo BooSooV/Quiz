@@ -1,6 +1,7 @@
 package engine;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import engine.compleatedQuiz.CompletedQuizPagenation;
 import engine.quiz.Quiz;
 import org.junit.jupiter.api.Test;
 
@@ -8,8 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -20,8 +20,10 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 
@@ -45,7 +47,7 @@ public class TestQuizEngine {
 
     @Test
     public void addUser() throws Exception {
-        User user = new User("test@gmail.com", "secret");
+        User user = new User("test2@gmail.com", "secret2");
         mockMvc.perform(post("/api/register")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(user)))
@@ -79,17 +81,50 @@ public class TestQuizEngine {
                 .andExpect(content().string(containsString("\"id\":1")));
 
     }
+
+
     @Test
     public void getAllQuizzesPaging() throws Exception {
-        this.mockMvc.perform(get("/api/quizzes"))
+        this.mockMvc.perform(get("/api/quizzes")
+                .param("page", "0"))
                 .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("\"id\":1")));
+                .andExpect(status().isOk());
 
     }
 
+    @Test
+    public void solveQuiz() throws Exception {
+        List answer = new ArrayList();
+        answer.add(0);
+        answer.add(1);
+        Hashtable answerFromUser = new Hashtable();
+        answerFromUser.put("answer", answer);
 
+        this.mockMvc.perform(post("/api/quizzes/1/solve")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(answerFromUser)))
+                .andDo(print())
+                .andExpect(status().isOk());
 
+    }
+
+    @Test
+    public void CompletedQuizPagenation() throws Exception {
+        this.mockMvc.perform(get("/api/quizzes/completed")
+                .param("page", "0"))
+                .andDo(print())
+                .andExpect(status().isOk());
+
+    }
+
+    @Test
+    //@Sql(value = {"/quiz-before.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    public void deleteQuiz() throws Exception {
+        this.mockMvc.perform(delete("/api/quizzes/1"))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+
+    }
 
 }
 
