@@ -17,6 +17,8 @@ import static org.hamcrest.Matchers.containsString;
 
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
@@ -27,6 +29,10 @@ import java.util.List;
 @SpringBootTest
 @AutoConfigureMockMvc
 @WithMockUser(value = "test@gmail.com", password = "secret",roles = "ADMIN")
+@TestPropertySource("/application-test.properties")
+@Sql(value = {"/clear-user-before.sql", "/quiz-before.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+//@Sql(value = {"/create-user-before.sql", "/messages-list-before.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+//@Sql(value = {"/messages-list-after.sql", "/create-user-after.sql"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class TestQuizEngine {
 
 
@@ -38,13 +44,14 @@ public class TestQuizEngine {
     ObjectMapper objectMapper;
 
     @Test
-    public void contexLoads() throws Exception {
-        this.mockMvc.perform(get("/api/quizzes/2"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("\"id\":2")));
-        /////////////////(jsonPath("$.message").value("Hello World!!!")
+    public void addUser() throws Exception {
+        User user = new User("test@gmail.com", "secret");
+        mockMvc.perform(post("/api/register")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(user)))
+                .andExpect(status().isOk());
     }
+
     @Test
     public void sendQuiz() throws Exception {
 
@@ -58,13 +65,32 @@ public class TestQuizEngine {
         answers.add(1);
         Quiz quiz = new Quiz("Tea drinks","Select only tea drinks.",options, answers);
 
-        System.out.println("////////////////////////////////////////////////////////////////////////////////////////////////////////////");
-        System.out.println(quiz);
         mockMvc.perform(post("/api/quizzes")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(quiz)))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    public void getQuizById() throws Exception {
+        this.mockMvc.perform(get("/api/quizzes/1"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("\"id\":1")));
+
+    }
+    @Test
+    public void getAllQuizzesPaging() throws Exception {
+        this.mockMvc.perform(get("/api/quizzes"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("\"id\":1")));
+
+    }
+
+
+
+
 }
 
 
