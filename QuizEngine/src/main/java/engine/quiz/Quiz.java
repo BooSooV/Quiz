@@ -27,7 +27,7 @@ public class Quiz {
         this.text = text;
         this.creator = null;
         this.options = options;
-        this.options = answers;
+        this.answers = answers;
     }
 
     public Quiz(String title, String text, String creator, List options, List answers) {
