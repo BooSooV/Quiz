@@ -36,6 +36,7 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.13'
 
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
     test {
         useJUnitPlatform()
