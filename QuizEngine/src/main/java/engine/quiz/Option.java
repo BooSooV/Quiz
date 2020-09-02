@@ -8,6 +8,8 @@ import javax.persistence.Id;
 @Entity
 public class Option {
 
+
+
     @Id
     @GeneratedValue
     public long optionId;
@@ -15,10 +17,28 @@ public class Option {
     @Column
     public String option;
 
+
+
     public Option(String option) {
         this.option = option;
     }
     public Option() {
+    }
+
+    public void setOptionId(long optionId) {
+        this.optionId = optionId;
+    }
+
+    public long getOptionId() {
+        return optionId;
+    }
+
+    public void setOption(String option) {
+        this.option = option;
+    }
+
+    public String getOption() {
+        return option;
     }
 
     @Override

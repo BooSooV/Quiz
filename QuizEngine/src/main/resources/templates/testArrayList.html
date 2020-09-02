@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>testArrayList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>testArrayList</h1>
+
+
+    <tr th:each="greeting : ${greetings}">
+        <p>
+            <span th:text="${greeting.id}"> </span>
+            <span th:text="${greeting.content}"> </span>
+        </p>
+    </tr>
+
+</body>
+</html>

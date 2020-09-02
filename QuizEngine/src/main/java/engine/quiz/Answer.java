@@ -22,6 +22,22 @@ public class Answer {
     public Answer() {
     }
 
+    public long getAnswerId() {
+        return answerId;
+    }
+
+    public void setAnswerId(long answerId) {
+        this.answerId = answerId;
+    }
+
+    public Integer getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(Integer answer) {
+        this.answer = answer;
+    }
+
     @Override
     public String toString() {
         return String.format(answer.toString());

@@ -5,6 +5,14 @@ public class Greeting {
     private long id;
     private String content;
 
+
+    public Greeting(long id, String content) {
+        this.id = id;
+        this.content = content;
+    }
+
+    public Greeting() {}
+
     public long getId() {
         return id;
     }
@@ -21,4 +29,8 @@ public class Greeting {
         this.content = content;
     }
 
+    @Override
+    public String toString() {
+        return String.format(id + " - " + content);
+    }
 }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>testArrayList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>testArrayList</h1>
+
+
+    <form action="#" th:action="@{/save}" th:object="${form}"
+          method="post">
+        <fieldset>
+            <input type="submit" id="submitButton" th:value="Save">
+            <input type="reset" id="resetButton" name="reset" th:value="Reset"/>
+            <table>
+                <thead>
+                <tr>
+                    <th> Title</th>
+                    <th> Author</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="book, itemStat : *{greetingsList}">
+                    <td><input th:field="*{greetingsList[__${itemStat.index}__].id}" /></td>
+                    <td><input th:field="*{greetingsList[__${itemStat.index}__].content}" /></td>
+                </tr>
+                </tbody>
+            </table>
+        </fieldset>
+    </form>
+
+</body>
+</html>
