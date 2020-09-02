@@ -1,5 +1,6 @@
 package engine.controller;
 
+import engine.quiz.Answer;
 import engine.quiz.Option;
 import engine.thymeleaf.GreetingsList;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import engine.thymeleaf.Greeting;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 
 import engine.quiz.Quiz;;
@@ -58,18 +58,21 @@ public class ThymeleafController {
     @GetMapping("/GUI/addQuiz")
     public String homePage(Model model) {
         Quiz quiz = new Quiz();
-        quiz.options.add(new Option("opt1"));
-        quiz.options.add(new Option("opt2"));
-        quiz.options.add(new Option("opt3"));
+        for (int i = 1; i <= 4; i++) {
+            quiz.options.add(new Option());
+            quiz.answers.add(new Answer());
+        }
+
 
         model.addAttribute("quiz", quiz);
-        return "addQuiz";
+        return "Quiz/addQuiz";
     }
 
     @PostMapping("/GUI/addQuiz")
     public String testPostMethod(@ModelAttribute Quiz quiz, Model model) {
         System.out.println(quiz);
-        return "homePage";
+        model.addAttribute("quiz", quiz);
+        return "Quiz/addedQuiz";
     }
 /*
 

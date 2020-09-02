@@ -10,10 +10,14 @@
         <p>title: <input type="text" th:field="*{title}" /></p>
         <p>text: <input type="text" th:field="*{text}" /></p>
 
-        <h3>options</h3>
+        <h3>options_______________answers</h3>
         <tr th:each="options, itemStat : *{options}">
-            <td><input th:field="*{options[__${itemStat.index}__].option}" /></td>
+            <p>
+                <td><input th:field="*{options[__${itemStat.index}__].option}" /></td>
+                <td><input th:field="*{answers[__${itemStat.index}__].answer}" /></td>
+            </p>
         </tr>
+
 
         <input type="submit" value="Submit" />
         <input type="reset" value="Reset" />

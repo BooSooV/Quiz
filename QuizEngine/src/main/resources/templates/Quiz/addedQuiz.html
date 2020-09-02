@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>testArrayList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Added Quiz</h1>
+
+<p th:text="'id: ' + ${quiz.id}" />
+<p th:text="'title: ' + ${quiz.title}" />
+<p th:text="'text: ' + ${quiz.text}" />
+<p th:text="'creator: ' + ${quiz.creator}" />
+
+<h3>options</h3>
+<tr th:each="options : ${quiz.options}">
+    <p>
+        <span th:text="${options.optionId}"> </span>
+        <span th:text="${options.option}"> </span>
+    </p>
+</tr>
+
+<h3>answers</h3>
+<tr th:each="answer : ${quiz.answers}">
+    <p>
+        <span th:text="${answer.answerId}"> </span>
+        <span th:text="${answer.answer}"> </span>
+    </p>
+</tr>
+
+</body>
+</html>
