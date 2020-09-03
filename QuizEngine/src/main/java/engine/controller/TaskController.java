@@ -88,24 +88,6 @@ public class TaskController {
             return quiz;
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-/*
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if(quizFromUser.title != null && quizFromUser.text != null) {
-            if(!quizFromUser.title.equals("") && !quizFromUser.text.equals("")) {
-                if (quizFromUser.options.size() >= 2) {
-                    int idBase = quizService.SaveOrUpdateQuiz(new QuizForStore(quizFromUser,auth.getName()));
-                    QuizToUser addedQuiz = new QuizToUser(idBase, quizFromUser.title, quizFromUser.text, quizFromUser.options);
-                    return addedQuiz;
-                }
-            }
-        }
-
-  "title": "Tea drinks",
-  "text": "Select only tea drinks.",
-  "options": ["black tea","green tea","Cappuccino","Sprite"],
-  "answer": [0,1]
-
-        */
     }
 
     //Get Quiz by id

@@ -6,7 +6,8 @@
 </head>
 <body>
     <h1>Create new Quiz</h1>
-    <form action="#" th:action="@{/GUI/addQuiz}" th:object="${quiz}" method="post">
+    <form action="#" th:action="@{/GUI/addQuiz}" th:object="${quiz}"  method="post">
+
         <p>title: <input type="text" th:field="*{title}" /></p>
         <p>text: <input type="text" th:field="*{text}" /></p>
 
@@ -18,9 +19,16 @@
             </p>
         </tr>
 
-
+        <div th:object="${arrayListBooleanWrapper}" >
+            <tr th:each="boolList, itemStat : *{boolList}">
+                <p>
+                <td><input type="checkbox" th:field="*{boolList[__${itemStat.index}__].bool}" /></td>
+                </p>
+            </tr>
+        </div>
         <input type="submit" value="Submit" />
         <input type="reset" value="Reset" />
+
     </form>
 </body>
 </html>

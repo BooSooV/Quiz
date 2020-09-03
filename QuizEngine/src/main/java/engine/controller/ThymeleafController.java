@@ -2,7 +2,12 @@ package engine.controller;
 
 import engine.quiz.Answer;
 import engine.quiz.Option;
+import engine.service.QuizService;
+import engine.thymeleaf.ArrayListBooleanWrapper;
 import engine.thymeleaf.GreetingsList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +19,66 @@ import engine.thymeleaf.Greeting;
 import java.util.ArrayList;
 import java.util.List;
 
-import engine.quiz.Quiz;;
+import engine.thymeleaf.BooleanWrapper;
+import engine.quiz.Quiz;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.server.ResponseStatusException;;
 @Controller
 public class ThymeleafController {
+
+    @Autowired
+    QuizService quizService;
+
+    //Request Quiz
+    @GetMapping("/GUI/addQuiz")
+    public String homePage(Model model) {
+        Quiz quiz = new Quiz();
+        ArrayListBooleanWrapper arrayListBooleanWrapper = new ArrayListBooleanWrapper();
+        for (int i = 1; i <= 4; i++) {
+            quiz.options.add(new Option());
+            quiz.answers.add(new Answer());
+            arrayListBooleanWrapper.addBoolean(new BooleanWrapper());
+        }
+
+
+        model.addAttribute("quiz", quiz);
+        model.addAttribute("arrayListBooleanWrapper", arrayListBooleanWrapper);
+        return "Quiz/addQuiz";
+    }
+
+    //Add quiz to base
+    @PostMapping("/GUI/addQuiz")
+    public String testPostMethod(@ModelAttribute Quiz quiz, ArrayListBooleanWrapper arrayListBooleanWrapper, Model model) {
+        System.out.println(quiz);
+        System.out.println(arrayListBooleanWrapper);
+        if(quiz.isCorrect()) {
+            quiz.creator = SecurityContextHolder.getContext().getAuthentication().getName();
+            quizService.SaveOrUpdateQuiz(quiz);
+            model.addAttribute("quiz", quiz);
+            return "Quiz/addedQuiz";
+        }
+        quiz.title += "_not_correct_";
+        model.addAttribute("quiz", quiz);
+        return "Quiz/addQuiz";
+    }
+
+    /*
+    //Add quiz to site
+    @PostMapping(path = "/api/quizzes")
+    public Quiz addQuiz(@RequestBody Quiz quiz){
+        if(quiz.isCorrect()) {
+            quiz.creator = SecurityContextHolder.getContext().getAuthentication().getName();
+            quizService.SaveOrUpdateQuiz(quiz);
+            return quiz;
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+*/
+
+
+
+
+
 
 
 
@@ -50,30 +112,6 @@ public class ThymeleafController {
         return "redirect:/all";
     }
 
-
-
-
-
-
-    @GetMapping("/GUI/addQuiz")
-    public String homePage(Model model) {
-        Quiz quiz = new Quiz();
-        for (int i = 1; i <= 4; i++) {
-            quiz.options.add(new Option());
-            quiz.answers.add(new Answer());
-        }
-
-
-        model.addAttribute("quiz", quiz);
-        return "Quiz/addQuiz";
-    }
-
-    @PostMapping("/GUI/addQuiz")
-    public String testPostMethod(@ModelAttribute Quiz quiz, Model model) {
-        System.out.println(quiz);
-        model.addAttribute("quiz", quiz);
-        return "Quiz/addedQuiz";
-    }
 /*
 
 

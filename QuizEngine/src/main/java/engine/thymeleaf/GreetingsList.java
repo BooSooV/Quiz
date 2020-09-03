@@ -8,12 +8,11 @@ public class GreetingsList {
 
     private List<Greeting> greetingsList = new ArrayList<>();
 
+
     public GreetingsList(List<Greeting> greetingsList) {
         this.greetingsList = greetingsList;
     }
-    public GreetingsList() {
-
-    }
+    public GreetingsList() {    }
 
     public void addGreeting(Greeting greeting) {
         this.greetingsList.add(greeting);
