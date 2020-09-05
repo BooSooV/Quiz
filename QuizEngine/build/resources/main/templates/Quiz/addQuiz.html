@@ -15,18 +15,32 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="bg-orange">
 <div class="container">
+    <div class="row">
+        <div class="col-md-8">
+
     <form action="#" th:action="@{/GUI/addQuiz}" method="post">
         <div class="row text-center" style="background-color: #00BCD4">
             <h1>Create new Quiz</h1>
         </div>
 
-                <div class="row text-center" th:object="${quiz}" style="background-color: #E91E63">
-                    <div class="col-md-6"> Title: <input type="text" th:field="*{title}"/> </div>
-                    <div class="col-md-6"> Text: <input type="text" th:field="*{text}" /> </div>
+                <div class="row" th:object="${quiz}" style="background-color: #E91E63">
+<!--                    <div class="col-md-6 ">-->
+                        <label for="title">Title</label>
+                        <input type="text" th:field="*{title}" class="form-control" id="title" placeholder="" value="" required="">
                 </div>
+<!--                    <div class="col-md-6">-->
+                <div class="row" th:object="${quiz}" style="background-color: #E91E63">
+                        <label for="text">Text</label>
+<!--                        <input type="text" th:field="*{text}"  class="form-control" id="text" placeholder="" value="" required="">-->
+                        <textarea type="text" th:field="*{text}" class="form-control" id="text" rows="4"></textarea>
 
+<!--                    </div>-->
+                </div>
+                <div class="mx-10">
+                    <input type="text" class="form-control" >
+                </div>
 
 
 <!--                <div class="row text-center" th:object="${quiz}" style="background-color: #FFC107">-->
@@ -47,23 +61,53 @@
 
 
 
-        <div class="row text-center"  style="background-color: #FFC107">
+        <div class="row text-center" style="background-color: #FFC107">
+
+<!--            -->
 
 
+            <div class="col-md-7" style="background-color: #3F51B5">
+                <table class="table" style="background-color: white">
+                    <thead>
+                    <tr class="active">
+                        <th class="text-center" style="width: 95%">Options </th>
+                        <th class="text-center" style="width: 5%"> Answers </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td> <span th:object="${quiz}"> <input class="form-control" th:field="*{options[0].option}"/> </span> </td>
+                        <td> <span th:object="${arrayListBooleanWrapper}"> <input type="checkbox" th:field="*{boolList[0].bool}"/> </span> </td>
+                    </tr>
+                    <tr>
+                        <td> <span th:object="${quiz}"> <input class="form-control" th:field="*{options[1].option}"/> </span> </td>
+                        <td> <span th:object="${arrayListBooleanWrapper}"> <input type="checkbox" th:field="*{boolList[1].bool}"/> </span> </td>
+                    </tr>
+                    <tr>
+                        <td> <span th:object="${quiz}"> <input class="form-control" th:field="*{options[2].option}"/> </span> </td>
+                        <td> <span th:object="${arrayListBooleanWrapper}"> <input type="checkbox" th:field="*{boolList[2].bool}"/> </span> </td>
+                    </tr>
+                    <tr>
+                        <td> <span th:object="${quiz}"> <input class="form-control" th:field="*{options[3].option}"/> </span> </td>
+                        <td> <span th:object="${arrayListBooleanWrapper}"> <input type="checkbox" th:field="*{boolList[3].bool}"/> </span> </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-5"style="background-color: #E91E63">
 
-            <div th:object="${quiz}">
-                <p><input th:field="*{options[0].option}" /></p>
-                <p><input th:field="*{options[__${1}__].option}" /></p>
-                <p><input th:field="*{options[__${2}__].option}" /></p>
-                <p><input th:field="*{options[__${3}__].option}" /></p>
             </div>
 
 
-            <div class="col-md-6" th:object="${arrayListBooleanWrapper}">
-                <tr th:each="boolList, itemStat : *{boolList}">
-                    <p><input type="checkbox" th:field="*{boolList[__${itemStat.index}__].bool}" /></p>
-                </tr>
-            </div>
+
+
+
+
+
+
+
+
+
         </div>
 
 
@@ -74,6 +118,10 @@
                     <input type="reset" value="Reset" />
                 </div>
     </form>
+        </div>
+        <div class="col-md-4">
+        </div>
+</div>
 </div>
 </body>
 </html>
