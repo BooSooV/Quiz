@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Quiz</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Create new Quiz</h1>
+    <form action="#" th:action="@{/GUI/addQuiz}" th:object="${quiz}"  method="post">
+
+        <p>title: <input type="text" th:field="*{title}" /></p>
+        <p>text: <input type="text" th:field="*{text}" /></p>
+
+        <h3>options_______________answers</h3>
+        <tr th:each="options, itemStat : *{options}">
+            <p>
+            <td><input th:field="*{options[__${itemStat.index}__].option}" /></td>
+            <td><input th:field="*{answers[__${itemStat.index}__].answer}" /></td>
+            </p>
+        </tr>
+
+        <div th:object="${arrayListBooleanWrapper}" >
+            <tr th:each="boolList, itemStat : *{boolList}">
+                <p>
+                <td><input type="checkbox" th:field="*{boolList[__${itemStat.index}__].bool}" /></td>
+                </p>
+            </tr>
+        </div>
+        <input type="submit" value="Submit" />
+        <input type="reset" value="Reset" />
+
+    </form>
+</body>
+</html>

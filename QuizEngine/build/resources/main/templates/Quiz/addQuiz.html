@@ -1,35 +1,80 @@
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Create Quiz</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <title>Bootstrap уроки</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <h1>Create new Quiz</h1>
-    <form action="#" th:action="@{/GUI/addQuiz}" th:object="${quiz}"  method="post">
-
-        <p>title: <input type="text" th:field="*{title}" /></p>
-        <p>text: <input type="text" th:field="*{text}" /></p>
-
-        <h3>options_______________answers</h3>
-        <tr th:each="options, itemStat : *{options}">
-            <p>
-                <td><input th:field="*{options[__${itemStat.index}__].option}" /></td>
-                <td><input th:field="*{answers[__${itemStat.index}__].answer}" /></td>
-            </p>
-        </tr>
-
-        <div th:object="${arrayListBooleanWrapper}" >
-            <tr th:each="boolList, itemStat : *{boolList}">
-                <p>
-                <td><input type="checkbox" th:field="*{boolList[__${itemStat.index}__].bool}" /></td>
-                </p>
-            </tr>
+<div class="container">
+    <form action="#" th:action="@{/GUI/addQuiz}" method="post">
+        <div class="row text-center" style="background-color: #00BCD4">
+            <h1>Create new Quiz</h1>
         </div>
-        <input type="submit" value="Submit" />
-        <input type="reset" value="Reset" />
 
+                <div class="row text-center" th:object="${quiz}" style="background-color: #E91E63">
+                    <div class="col-md-6"> Title: <input type="text" th:field="*{title}"/> </div>
+                    <div class="col-md-6"> Text: <input type="text" th:field="*{text}" /> </div>
+                </div>
+
+
+
+<!--                <div class="row text-center" th:object="${quiz}" style="background-color: #FFC107">-->
+<!--                    <div class="col-md-6 ">-->
+<!--                        <h3>Options</h3>-->
+<!--                        <tr th:each="options, itemStat : *{options}">-->
+<!--                            <p><input th:field="*{options[__${itemStat.index}__].option}" /></p>-->
+<!--                        </tr>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-md-6" th:object="${arrayListBooleanWrapper}">-->
+<!--                        <h3>Answers</h3>-->
+<!--                            <tr th:each="boolList, itemStat : *{boolList}">-->
+<!--                                <p><input type="checkbox" th:field="*{boolList[__${itemStat.index}__].bool}" /></p>-->
+<!--                            </tr>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+
+        <div class="row text-center"  style="background-color: #FFC107">
+
+
+
+            <div th:object="${quiz}">
+                <p><input th:field="*{options[0].option}" /></p>
+                <p><input th:field="*{options[__${1}__].option}" /></p>
+                <p><input th:field="*{options[__${2}__].option}" /></p>
+                <p><input th:field="*{options[__${3}__].option}" /></p>
+            </div>
+
+
+            <div class="col-md-6" th:object="${arrayListBooleanWrapper}">
+                <tr th:each="boolList, itemStat : *{boolList}">
+                    <p><input type="checkbox" th:field="*{boolList[__${itemStat.index}__].bool}" /></p>
+                </tr>
+            </div>
+        </div>
+
+
+
+
+                <div class="row text-center" style="background-color: #00BCD4">
+                    <input type="submit" value="Submit" />
+                    <input type="reset" value="Reset" />
+                </div>
     </form>
+</div>
 </body>
 </html>
 
