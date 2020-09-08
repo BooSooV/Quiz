@@ -1,32 +1,162 @@
+
+<!--<!DOCTYPE html>-->
+<!--<html  xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>testArrayList</title>-->
+<!--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Added Quiz</h1>-->
+
+<!--<p th:text="'id: ' + ${quiz.id}" />-->
+<!--<p th:text="'title: ' + ${quiz.title}" />-->
+<!--<p th:text="'text: ' + ${quiz.text}" />-->
+<!--<p th:text="'creator: ' + ${quiz.creator}" />-->
+
+<!--<h3>options</h3>-->
+<!--<tr th:each="options : ${quiz.options}">-->
+<!--    <p>-->
+<!--        <span th:text="${options.optionId}"> </span>-->
+<!--        <span th:text="${options.option}"> </span>-->
+<!--    </p>-->
+<!--</tr>-->
+
+<!--<h3>answers</h3>-->
+<!--<tr th:each="answer : ${quiz.answers}">-->
+<!--    <p>-->
+<!--        <span th:text="${answer.answerId}"> </span>-->
+<!--        <span th:text="${answer.answer}"> </span>-->
+<!--    </p>-->
+<!--</tr>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html  xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <title>Bootstrap уроки</title>-->
+
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    &lt;!&ndash; Latest compiled and minified CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+
+<!--    &lt;!&ndash; Optional theme &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
+
+<!--    &lt;!&ndash; Latest compiled and minified JavaScript &ndash;&gt;-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+<!--</head>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+<!--    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+<!--    <script type="text/javascript" src="scripts.js"></script>-->
+<!--    <link rel="stylesheet" href="styles.css">-->
+<!--</head>-->
+
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>testArrayList</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <title>Bootstrap уроки</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 </head>
-<body>
-<h1>Added Quiz</h1>
 
-<p th:text="'id: ' + ${quiz.id}" />
-<p th:text="'title: ' + ${quiz.title}" />
-<p th:text="'text: ' + ${quiz.text}" />
-<p th:text="'creator: ' + ${quiz.creator}" />
+<body class="bg-secondary">
 
-<h3>options</h3>
-<tr th:each="options : ${quiz.options}">
-    <p>
-        <span th:text="${options.optionId}"> </span>
-        <span th:text="${options.option}"> </span>
-    </p>
-</tr>
 
-<h3>answers</h3>
-<tr th:each="answer : ${quiz.answers}">
-    <p>
-        <span th:text="${answer.answerId}"> </span>
-        <span th:text="${answer.answer}"> </span>
-    </p>
-</tr>
+<div class="container bg-light">
+    <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 100%">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
+
+
+
+    <div class="row min-vh-100">
+
+        <div class="col-md-8">
+            <form>
+                <h4 class="mb-3 alert alert-success mt-lg-5 mt-xl-5">Quiz added to site</h4>
+                <div class="mb-3" th:object="${quiz}">
+                    <label for="title">Title</label>
+                    <input type="text" th:field="*{title}" class="form-control" id="title" >
+                </div>
+                <div class="mb-3" th:object="${quiz}" >
+                    <label for="text">Text</label>
+                    <textarea type="text" th:field="*{text}" class="form-control" id="text" rows="4"></textarea>
+                </div>
+                <div class="mb-3" >
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <td style="width: 95%">Options</td>
+                            <td style="width: 5%"> Answers </td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td> <span th:object="${quiz}"> <input class="form-control" th:field="*{options[0].option}"/> </span> </td>
+                            <td class="text-center"> <span th:object="${arrayListBooleanWrapper}"> <input type="checkbox" th:field="*{boolList[0].bool}"/> </span> </td>
+                        </tr>
+                        <tr>
+                            <td> <span th:object="${quiz}"> <input class="form-control" th:field="*{options[1].option}"/> </span> </td>
+                            <td class="text-center"> <span th:object="${arrayListBooleanWrapper}"> <input type="checkbox" th:field="*{boolList[1].bool}"/> </span> </td>
+                        </tr>
+                        <tr>
+                            <td> <span th:object="${quiz}"> <input class="form-control" th:field="*{options[2].option}"/> </span> </td>
+                            <td class="text-center"> <span th:object="${arrayListBooleanWrapper}"> <input type="checkbox" th:field="*{boolList[2].bool}"/> </span> </td>
+                        </tr>
+                        <tr>
+                            <td> <span th:object="${quiz}"> <input class="form-control" th:field="*{options[3].option}"/> </span> </td>
+                            <td class="text-center"> <span th:object="${arrayListBooleanWrapper}"> <input type="checkbox" th:field="*{boolList[3].bool}"/> </span> </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <button class="btn btn-primary" href="/GUI/addQuiz" role="button">Add next Quiz</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>
 </body>
 </html>
+
