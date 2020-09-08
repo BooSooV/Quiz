@@ -51,7 +51,9 @@
                                         <span th:utext="*{quizIdAndTitleList[__${itemStat.index}__].title}"></span>
                                     </div>
                                     <div class="col-md-3">
-                                        <button class="btn btn-primary m-2" href="/GUI/addQuiz" role="button">Solve</button>
+<!--                                        <button class="btn btn-primary m-2" href="/GUI/addQuiz" role="button">Solve</button>-->
+<!--                                        <a class="btn btn-secondary mb-5" th:href="@{/GUI/quizzes/(page=${itemStat.index})}" role="button"><span th:utext="__${itemStat.index}__"></span></a>-->
+                                        <a class="btn btn-primary m-2" th:href="@{/GUI/quizzesSolve/(id=*{quizIdAndTitleList[__${itemStat.index}__].id})}" role="button">Solve</a>
                                     </div>
                                 </div>
                             </div>

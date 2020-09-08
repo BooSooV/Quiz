@@ -1,23 +1,35 @@
 package engine.controller;
 
+import engine.answer.AnsToUser;
 import engine.quiz.Answer;
 import engine.quiz.Option;
 import engine.quiz.QuizPagenation;
 import engine.service.QuizService;
+import engine.service.UserService;
 import engine.thymeleaf.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import engine.quiz.Quiz;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Hashtable;
+import java.util.List;
 
 @Controller
 public class ThymeleafController {
 
     @Autowired
     QuizService quizService;
+
+    @Autowired
+    UserService userService;
 
     //Request Quiz
     @GetMapping("/GUI/addQuiz")
@@ -43,7 +55,7 @@ public class ThymeleafController {
         System.out.println(arrayListBooleanWrapper);
         for (int i = 0; i <= 3; i++) {
             if(arrayListBooleanWrapper.getBoolList().get(i).isBool()) {
-                quiz.answers.add(new Answer(i+1));
+                quiz.answers.add(new Answer(i));
             }
         }
         if(quiz.isCorrect()) {
@@ -76,8 +88,84 @@ public class ThymeleafController {
         return "Quiz/allQuizzesPagination";
     }
 
+    //Get Quiz for solve
+    @GetMapping(path = "/GUI/quizzesSolve")
+    public String solveQuiz(@RequestParam String id, Model model){
+        ArrayListBooleanWrapper arrayListBooleanWrapper = new ArrayListBooleanWrapper();
+        for (int i = 0; i <= 3; i++) { arrayListBooleanWrapper.addBoolean(new BooleanWrapper());}
+
+        try {
+            Quiz quiz = quizService.getQuizById(Integer.parseInt(id));
+            System.out.println(quiz);
+            model.addAttribute("quiz", quiz);
+            model.addAttribute("arrayListBooleanWrapper", arrayListBooleanWrapper);
+            return "Quiz/solveQuiz";
+        }
+        catch (Exception excep) { throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Quiz Not Found", excep); }
+    }
+
+    //Check answer on quiz
+    @PostMapping("/GUI/checkAnswer")
+    public String checkAnswer(@ModelAttribute Quiz quiz, ArrayListBooleanWrapper arrayListBooleanWrapper, Model model) {
+        System.out.println("Check answer on quiz");
+        System.out.println(arrayListBooleanWrapper);
+        System.out.println(quiz);
+
+
+        ArrayList<Integer> answerFromRepository;
+        try {
+            answerFromRepository = quizService.getSortAnswerById(quiz.id);
+            System.out.println("3___" + answerFromRepository);
+        }
+        catch (Exception excep) {
+            System.out.println("Quiz Not Found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Quiz Not Found", excep);
+        }
+
+        List<Integer> answerFromUser = new ArrayList<>();
+        for (int i = 0; i <= 3; i++) {
+            if(arrayListBooleanWrapper.getBoolList().get(i).isBool()) {
+                answerFromUser.add(i);
+            }
+        }
+        System.out.println(answerFromRepository);
+        System.out.println(answerFromUser);
+
+        if (answerFromUser.equals(answerFromRepository)) {
+            userService.addCompleteQuiz(quiz.id, SecurityContextHolder.getContext().getAuthentication().getName());
+            model.addAttribute("quiz", quiz);
+            model.addAttribute("arrayListBooleanWrapper", arrayListBooleanWrapper);
+            return "Quiz/solveQuizCorrect";
+        } else {
+            model.addAttribute("quiz", quiz);
+            model.addAttribute("arrayListBooleanWrapper", arrayListBooleanWrapper);
+            return "Quiz/solveQuizNotCorrect";
+        }
+
+
+
+
+//        return "Quiz/solveQuiz";
+    }
 
 }
+        //        ArrayList<Integer> answerFromRepository;
+//        try {
+//            answerFromRepository = quizService.getSortAnswerById(id);
+//        }
+//        catch (Exception excep) { throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Quiz Not Found", excep); }
+//        Collections.sort((List)answerFromUser.get("answer"));
+//
+//        if (answerFromUser.get("answer").equals(answerFromRepository)) {
+//            userService.addCompleteQuiz(id, SecurityContextHolder.getContext().getAuthentication().getName());
+//            return new AnsToUser(true);
+//        } else {
+//            return new AnsToUser(false);
+//        }
+
+
+
+
 
 
 

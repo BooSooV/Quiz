@@ -114,7 +114,7 @@ public class TaskController {
     }
 
 
-    //Solving a Quiz
+    //Solve a Quiz
     @PostMapping(path = "/api/quizzes/{id}/solve")
     public AnsToUser solveQuiz(@PathVariable Integer id, @RequestBody Hashtable answerFromUser){
         ArrayList<Integer> answerFromRepository;
