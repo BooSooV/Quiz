@@ -38,22 +38,27 @@
         </nav>
     </div>
 
+
+<!--    <div class="mb-3" th:object="${quiz}" >-->
+<!--        <label for="title">Title</label>-->
+<!--        <input type="text" th:field="*{title}" class="form-control" id="title" >-->
+<!--    </div>-->
+
     <div class="row">
         <div class="col-md-8">
-            <h1 class="blog-post-title text-center m-lg-5 m-xl-5 ">All Quizzes</h1>
+            <h1 class="blog-post-title text-center m-lg-5 m-xl-5 ">All solved Quizzes</h1>
             <main role="main" class="container">
-                <div th:object="${quizIdAndTitleList}">
-                    <tr th:each="quizIdAndTitleList, itemStat : *{quizIdAndTitleList}">
+                <div th:object="${completedQuizzes}">
+                    <tr th:each="completedQuiz, itemStat : *{content}">
                         <div class="card m-2">
                             <div class="card-body m-0 p-2">
                                 <div class="row">
-                                    <div class="col-md-9">
-                                        <span th:utext="*{quizIdAndTitleList[__${itemStat.index}__].title}"></span>
+<!--                                    <span th:utext="${completedQuiz.quizId}"></span>-->
+                                    <div class="col-md-2">
+                                        <span th:utext="${completedQuiz.quizId}"></span>
                                     </div>
-                                    <div class="col-md-3">
-<!--                                        <button class="btn btn-primary m-2" href="/GUI/addQuiz" role="button">Solve</button>-->
-<!--                                        <a class="btn btn-secondary mb-5" th:href="@{/GUI/quizzes/(page=${itemStat.index})}" role="button"><span th:utext="__${itemStat.index}__"></span></a>-->
-                                        <a class="btn btn-primary m-2" th:href="@{/GUI/quizzesSolve/(id=*{quizIdAndTitleList[__${itemStat.index}__].id})}" role="button">Solve</a>
+                                    <div class="col-md-10">
+                                        <span th:utext="${completedQuiz.completedAt}"></span>
                                     </div>
                                 </div>
                             </div>
@@ -61,18 +66,18 @@
                     </tr>
                 </div>
                 <div th:with="firstPer=${currentPage}">
-                    <div th:with="firstPer=${numberPages}">
+                    <div th:with="firstPer=${completedQuizzes.totalPages}">
                         <tr th:each="quizIdAndTitleList, itemStat : *{#numbers.sequence(1, firstPer)}">
-<!--                            <div th:text="${currentPage} == __${itemStat.index}__ ? 'ACTIVE' : 'RETIRED'"></div>-->
+                            <!--                            <div th:text="${currentPage} == __${itemStat.index}__ ? 'ACTIVE' : 'RETIRED'"></div>-->
                             <td>
                                 <span th:if="${currentPage} == __${itemStat.index}__">
-                                    <a class="btn btn-primary mb-5" th:href="@{/GUI/quizzes/(page=${itemStat.index})}" role="button"><span th:utext="__${itemStat.index}__"></span></a>
+                                    <a class="btn btn-primary mb-5" th:href="@{/GUI/AllSolvedQuizzes/(page=${itemStat.index})}" role="button"><span th:utext="__${itemStat.index}__"></span></a>
                                 </span>
                                 <span th:unless="${currentPage} == __${itemStat.index}__">
-                                    <a class="btn btn-secondary mb-5" th:href="@{/GUI/quizzes/(page=${itemStat.index})}" role="button"><span th:utext="__${itemStat.index}__"></span></a>
+                                    <a class="btn btn-secondary mb-5" th:href="@{/GUI/AllSolvedQuizzes/(page=${itemStat.index})}" role="button"><span th:utext="__${itemStat.index}__"></span></a>
                                 </span>
                             </td>
-<!--                            <a class="btn btn-primary mb-5" th:href="@{/GUI/quizzes/(page=${itemStat.index})}" role="button"><span th:utext="__${itemStat.index}__"></span></a>-->
+                            <!--                            <a class="btn btn-primary mb-5" th:href="@{/GUI/quizzes/(page=${itemStat.index})}" role="button"><span th:utext="__${itemStat.index}__"></span></a>-->
                         </tr>
                     </div>
                 </div>

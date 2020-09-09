@@ -27,4 +27,37 @@ public class CompletedQuiz {
     }
     public CompletedQuiz() {
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public int getQuizId() {
+        return quizId;
+    }
+
+    public void setQuizId(int quizId) {
+        this.quizId = quizId;
+    }
+
+    public String getCompletedAt() {
+        return completedAt;
+    }
+
+    public void setCompletedAt(String completedAt) {
+        this.completedAt = completedAt;
+    }
+
+    @Override
+    public String toString() {
+        return "\n" + "CompletedQuiz{" +
+                "id=" + id +
+                ", quizId=" + quizId +
+                ", completedAt='" + completedAt + '\'' +
+                '}';
+    }
 }

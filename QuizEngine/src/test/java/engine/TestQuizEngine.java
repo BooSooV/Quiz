@@ -1,7 +1,6 @@
 package engine;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import engine.compleatedQuiz.CompletedQuizPagenation;
 import engine.quiz.Quiz;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +19,6 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.Hashtable;

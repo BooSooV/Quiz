@@ -1,6 +1,8 @@
 package engine.controller;
 
-import engine.answer.AnsToUser;
+import engine.User;
+import engine.compleatedQuiz.CompletedQuizPagination;
+import engine.config.SpringSecurityConfig;
 import engine.quiz.Answer;
 import engine.quiz.Option;
 import engine.quiz.QuizPagenation;
@@ -9,6 +11,7 @@ import engine.service.UserService;
 import engine.thymeleaf.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +21,6 @@ import engine.quiz.Quiz;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Hashtable;
 import java.util.List;
 
 @Controller
@@ -31,7 +32,15 @@ public class ThymeleafController {
     @Autowired
     UserService userService;
 
-    //Request Quiz
+    @Autowired
+    SpringSecurityConfig springSecurityConfig;
+
+    @Autowired
+    AuthenticationManagerBuilder authenticationManagerBuilder;
+
+
+
+    //Create Quiz
     @GetMapping("/GUI/addQuiz")
     public String getFormForCreatingQuiz(Model model) {
         Quiz quiz = new Quiz();
@@ -148,7 +157,69 @@ public class ThymeleafController {
 //        return "Quiz/solveQuiz";
     }
 
+    //Get home page
+    @GetMapping(path = "/GUI/home")
+    public String getHomePage(){
+            return "Quiz/home";
+    }
+
+    //Get all solved Quizzes pagination
+    @GetMapping("/GUI/AllSolvedQuizzes")
+    public String getAllSolvedQuizzes(@RequestParam String page, Model model) {
+        System.out.println("AllSolvedQuizzes");
+        String creator = SecurityContextHolder.getContext().getAuthentication().getName();
+
+
+//        User user = new User(creator, "secret");
+//        userService.SaveUser(user);
+        //springSecurityConfig.configure(authenticationManagerBuilder);
+
+
+        System.out.println(creator);
+//        String creator = new String("test@gmail.com");
+        System.out.println(creator);
+        CompletedQuizPagination completedQuizzes = new CompletedQuizPagination(userService.getUsersSolvedQuizzesPaging(creator, Integer.parseInt(page), 10, "completed.completedAt"));
+        System.out.println(completedQuizzes);
+
+        model.addAttribute("currentPage", Integer.parseInt(page));
+        model.addAttribute("completedQuizzes", completedQuizzes);
+        return "Quiz/allSolvedQuizzes";
+    }
+
+//    @GetMapping(path = "/api/quizzes/completed")
+//    public CompletedQuizPagenation getAllCompletedQuiz(@RequestParam int page){
+//        String creator = SecurityContextHolder.getContext().getAuthentication().getName();
+//        return new CompletedQuizPagenation(userService.getUsersSolvedQuizzesPaging(creator, page, 10, "completed.completedAt"));
+//    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //        ArrayList<Integer> answerFromRepository;
 //        try {
 //            answerFromRepository = quizService.getSortAnswerById(id);

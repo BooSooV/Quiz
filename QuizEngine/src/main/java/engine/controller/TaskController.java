@@ -3,10 +3,9 @@ package engine.controller;
 import engine.*;
 import engine.answer.AnsToUser;
 import engine.config.SpringSecurityConfig;
-import engine.compleatedQuiz.CompletedQuizPagenation;
+import engine.compleatedQuiz.CompletedQuizPagination;
 import engine.quiz.QuizPagenation;
 import engine.quiz.*;
-import engine.compleatedQuiz.CompletedQuiz;
 import engine.service.QuizService;
 import engine.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,21 +16,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
 import java.util.*;
 import java.util.regex.Pattern;
-
-import engine.thymeleaf.Greeting;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @RestController
 public class TaskController {
@@ -161,8 +151,8 @@ public class TaskController {
 
 
     @GetMapping(path = "/api/quizzes/completed")
-    public CompletedQuizPagenation getAllCompletedQuiz(@RequestParam int page){
+    public CompletedQuizPagination getAllCompletedQuiz(@RequestParam int page){
         String creator = SecurityContextHolder.getContext().getAuthentication().getName();
-        return new CompletedQuizPagenation(userService.getUsersSolvedQuizzesPaging(creator, page, 10, "completed.completedAt"));
+        return new CompletedQuizPagination(userService.getUsersSolvedQuizzesPaging(creator, page, 10, "completed.completedAt"));
     }
 }
