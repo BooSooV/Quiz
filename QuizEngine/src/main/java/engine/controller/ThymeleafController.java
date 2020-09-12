@@ -12,6 +12,7 @@ import engine.thymeleaf.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,7 +52,7 @@ public class ThymeleafController {
             arrayListBooleanWrapper.addBoolean(new BooleanWrapper());
         }
 
-
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("quiz", quiz);
         model.addAttribute("arrayListBooleanWrapper", arrayListBooleanWrapper);
         return "Quiz/addQuiz";
@@ -70,11 +71,13 @@ public class ThymeleafController {
         if(quiz.isCorrect()) {
             quiz.creator = SecurityContextHolder.getContext().getAuthentication().getName();
             quizService.SaveOrUpdateQuiz(quiz);
+            model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
             model.addAttribute("quiz", quiz);
             model.addAttribute("arrayListBooleanWrapper", arrayListBooleanWrapper);
             return "Quiz/addedQuiz";
         }
         quiz.title += "_not_correct_";
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("quiz", quiz);
         model.addAttribute("arrayListBooleanWrapper", arrayListBooleanWrapper);
         return "Quiz/addQuiz";
@@ -91,6 +94,7 @@ public class ThymeleafController {
             quizIdAndTitleList.addQuizTitleAndId(new QuizIdAndTitle(quiz.id, quiz.title));
         }
         System.out.println(quizIdAndTitleList);
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("currentPage", Integer.parseInt(page));
         model.addAttribute("numberPages", quizPagenation.totalPages);
         model.addAttribute("quizIdAndTitleList", quizIdAndTitleList);
@@ -106,6 +110,7 @@ public class ThymeleafController {
         try {
             Quiz quiz = quizService.getQuizById(Integer.parseInt(id));
             System.out.println(quiz);
+            model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
             model.addAttribute("quiz", quiz);
             model.addAttribute("arrayListBooleanWrapper", arrayListBooleanWrapper);
             return "Quiz/solveQuiz";
@@ -116,18 +121,11 @@ public class ThymeleafController {
     //Check answer on quiz
     @PostMapping("/GUI/checkAnswer")
     public String checkAnswer(@ModelAttribute Quiz quiz, ArrayListBooleanWrapper arrayListBooleanWrapper, Model model) {
-        System.out.println("Check answer on quiz");
-        System.out.println(arrayListBooleanWrapper);
-        System.out.println(quiz);
-
-
         ArrayList<Integer> answerFromRepository;
         try {
             answerFromRepository = quizService.getSortAnswerById(quiz.id);
-            System.out.println("3___" + answerFromRepository);
         }
         catch (Exception excep) {
-            System.out.println("Quiz Not Found");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Quiz Not Found", excep);
         }
 
@@ -137,60 +135,111 @@ public class ThymeleafController {
                 answerFromUser.add(i);
             }
         }
-        System.out.println(answerFromRepository);
-        System.out.println(answerFromUser);
 
         if (answerFromUser.equals(answerFromRepository)) {
             userService.addCompleteQuiz(quiz.id, SecurityContextHolder.getContext().getAuthentication().getName());
+            model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
             model.addAttribute("quiz", quiz);
             model.addAttribute("arrayListBooleanWrapper", arrayListBooleanWrapper);
             return "Quiz/solveQuizCorrect";
         } else {
+            model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
             model.addAttribute("quiz", quiz);
             model.addAttribute("arrayListBooleanWrapper", arrayListBooleanWrapper);
             return "Quiz/solveQuizNotCorrect";
         }
-
-
-
-
-//        return "Quiz/solveQuiz";
     }
 
     //Get home page
     @GetMapping(path = "/GUI/home")
-    public String getHomePage(){
-            return "Quiz/home";
+    public String getHomePage(Model model){
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+        return "Quiz/home";
     }
 
     //Get all solved Quizzes pagination
     @GetMapping("/GUI/AllSolvedQuizzes")
     public String getAllSolvedQuizzes(@RequestParam String page, Model model) {
-        System.out.println("AllSolvedQuizzes");
-        String creator = SecurityContextHolder.getContext().getAuthentication().getName();
-
-
-//        User user = new User(creator, "secret");
-//        userService.SaveUser(user);
-        //springSecurityConfig.configure(authenticationManagerBuilder);
-
-
-        System.out.println(creator);
-//        String creator = new String("test@gmail.com");
-        System.out.println(creator);
-        CompletedQuizPagination completedQuizzes = new CompletedQuizPagination(userService.getUsersSolvedQuizzesPaging(creator, Integer.parseInt(page), 10, "completed.completedAt"));
-        System.out.println(completedQuizzes);
-
+        String user = SecurityContextHolder.getContext().getAuthentication().getName();
+        CompletedQuizPagination completedQuizzes = new CompletedQuizPagination(userService.getUsersSolvedQuizzesPaging(user, Integer.parseInt(page), 10, "completed.completedAt"));
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("currentPage", Integer.parseInt(page));
         model.addAttribute("completedQuizzes", completedQuizzes);
         return "Quiz/allSolvedQuizzes";
     }
 
-//    @GetMapping(path = "/api/quizzes/completed")
-//    public CompletedQuizPagenation getAllCompletedQuiz(@RequestParam int page){
-//        String creator = SecurityContextHolder.getContext().getAuthentication().getName();
-//        return new CompletedQuizPagenation(userService.getUsersSolvedQuizzesPaging(creator, page, 10, "completed.completedAt"));
-//    }
+    //Get delete quiz page
+    @GetMapping("/GUI/deleteQuizPage")
+    public String getDeleteQuizPage(Model model) {
+        StringWrapper numberQuiz = new StringWrapper("123");
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("numberQuiz", numberQuiz);
+        return "Quiz/deleteQuiz";
+    }
+
+    //Post delete quiz result
+    @PostMapping("/GUI/deleteQuizResult")
+    public String postDeleteQuizResult(@ModelAttribute StringWrapper numberQuiz, Model model) {
+        System.out.println(numberQuiz);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String creatorAuth = auth.getName();
+        Integer id = Integer.parseInt(numberQuiz.getStr());
+
+        try {
+            quizService.getQuizById(id);
+        }
+        catch (Exception exep) {
+            model.addAttribute("mesToUser", new String("Quiz not exist"));
+            model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+            return "Quiz/deleteQuizResult";
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Quiz Not Found", exep);
+        }
+
+        String creatorBase = quizService.getCreatorById(id);
+
+        if((creatorBase).equals(creatorAuth)) {
+            quizService.deleteQuizById(id);
+            model.addAttribute("mesToUser", new String("Quiz deleted"));
+            model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+            return "Quiz/deleteQuizResult";
+
+        } else {
+            model.addAttribute("mesToUser", new String("It's not your Quiz"));
+            model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+            return "Quiz/deleteQuizResult";
+        }
+
+
+//        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+//        return "Quiz/deleteQuizResult";
+    }
+
+    //Get login page
+    @GetMapping("/GUI/login")
+    public String getLoginPage(Model model) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+        return "Quiz/login";
+    }
+    //Post login result
+    @PostMapping("/GUI/loginResult")
+    public String postLoginResult(Model model) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+        return "Quiz/loginSuccess";
+    }
+
+    //Get registration page
+    @GetMapping("/GUI/registration")
+    public String getRegistrationPage(Model model) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+        return "Quiz/registration";
+    }
+    //Post registration result
+    @PostMapping("/GUI/registrationResult")
+    public String postRegistrationResult(Model model) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+        return "Quiz/registrationSuccess";
+    }
 
 
 }
