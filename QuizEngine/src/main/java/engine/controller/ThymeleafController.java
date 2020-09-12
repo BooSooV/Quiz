@@ -174,14 +174,13 @@ public class ThymeleafController {
         StringWrapper numberQuiz = new StringWrapper("123");
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("numberQuiz", numberQuiz);
+        model.addAttribute("mesToUser", new String(""));
         return "Quiz/deleteQuiz";
     }
 
     //Post delete quiz result
     @PostMapping("/GUI/deleteQuizResult")
     public String postDeleteQuizResult(@ModelAttribute StringWrapper numberQuiz, Model model) {
-        System.out.println(numberQuiz);
-
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String creatorAuth = auth.getName();
         Integer id = Integer.parseInt(numberQuiz.getStr());
@@ -190,24 +189,25 @@ public class ThymeleafController {
             quizService.getQuizById(id);
         }
         catch (Exception exep) {
+            model.addAttribute("numberQuiz", numberQuiz);
             model.addAttribute("mesToUser", new String("Quiz not exist"));
             model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
-            return "Quiz/deleteQuizResult";
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Quiz Not Found", exep);
+            return "Quiz/deleteQuiz";
         }
 
         String creatorBase = quizService.getCreatorById(id);
 
         if((creatorBase).equals(creatorAuth)) {
             quizService.deleteQuizById(id);
+            model.addAttribute("numberQuiz", numberQuiz);
             model.addAttribute("mesToUser", new String("Quiz deleted"));
             model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
-            return "Quiz/deleteQuizResult";
-
+            return "Quiz/deleteQuiz";
         } else {
-            model.addAttribute("mesToUser", new String("It's not your Quiz"));
+            model.addAttribute("numberQuiz", numberQuiz);
+            model.addAttribute("mesToUser", new String("Its not your Quiz"));
             model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
-            return "Quiz/deleteQuizResult";
+            return "Quiz/deleteQuiz";
         }
 
 

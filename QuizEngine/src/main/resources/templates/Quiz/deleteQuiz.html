@@ -58,84 +58,35 @@
                 <h3 class="mb-3 text-center m-5">Delete Quiz</h3>
 
                 <div class="row" th:object="${numberQuiz}">
-
                 </div>
                 <div class="row" th:object="${numberQuiz}">
                     <div class="col-md-2"></div>
                     <div class="col-md-7">
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3" id="inGroup">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">ID Quiz</span>
                             </div>
                             <input type="text" th:field="*{str}" class="form-control">
-<!--                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">-->
                             <div class="input-group-append">
                                 <button class="btn btn-danger" type="submit">Delete</button>
                             </div>
                         </div>
+
+                        <span th:if="${mesToUser.equals('Quiz not exist')}">
+                            <label class="text-danger" for="inGroup">Quiz not exist</label>
+                        </span>
+                        <span th:if="${mesToUser.equals('Its not your Quiz')}">
+                            <label class="text-danger" for="inGroup">Its not your Quiz</label>
+                        </span>
+                        <span th:if="${mesToUser.equals('Quiz deleted')}">
+                            <label class="text-danger" for="inGroup">Quiz deleted</label>
+                        </span>
                     </div>
                     <div class="col-md-3"></div>
                 </div>
-
-
-<!--                <div class="row" th:object="${numberQuiz}">-->
-<!--                    <div class="col-md-3">-->
-<!--                        <h5>Number quiz</h5>-->
-<!--                    </div>-->
-<!--                    <div class="col-md-2">-->
-<!--                        <input type="text" th:field="*{str}" class="form-control" >-->
-<!--                    </div>-->
-<!--                    <div class="col-md-7">-->
-<!--                        <button class="btn btn-danger" type="submit">Submit</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-
-<!--                <div class="mb-3" th:object="${numberQuiz}" >-->
-<!--                    <label for="text">Text</label>-->
-<!--                    <input type="text" th:field="*{str}" class="form-control" id="text"></input>-->
-<!--                </div>-->
-
             </form>
-
-
-<!--            <form action="#" th:action="@{/GUI/deleteQuizResult}" method="post">-->
-<!--                <h3 class="mb-3">Create new Quiz</h3>-->
-<!--                <div class="mb-3" th:object="${numberQuiz}" >-->
-<!--                    <label for="title">Title</label>-->
-<!--                    <input type="text" th:utext="${numberQuiz}" class="form-control" id="title" >-->
-<!--                </div>-->
-
-<!--                <div class="mb-3" >-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <button class="btn btn-primary" type="submit">Submit</button>-->
-<!--                    <button class="btn btn-danger" type="reset">Reset</button>-->
-<!--                </div>-->
-<!--            </form>-->
-
-
-
-
-<!--                <div class="row">-->
-<!--                    <div class="input-group">-->
-<!--&lt;!&ndash;                    <form class="card p-2">&ndash;&gt;-->
-<!--                    <div class="col-md-5">-->
-<!--                        <h3 class="mb-3">Number quiz</h3>-->
-<!--                    </div>-->
-<!--                    <div class="col-md-2">-->
-<!--                        <input type="text" th:field="*{title}" class="form-control" id="title" >-->
-<!--                    </div>-->
-<!--                    <div class="col-md-5">-->
-<!--                        <button class="btn btn-danger" type="submit">Submit</button>-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    </form>&ndash;&gt;-->
-<!--                    </div>-->
-<!--                </div>-->
-
         </div>
         <div class="col-md-4 bg-info">
-
         </div>
     </div>
 </div>
