@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap уроки</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<!--<body class="bg-secondary">-->
+<!--<div class="container bg-light min-vh-100">-->
+
+
+<!--    <body class="text-center">-->
+<!--    <form class="form-signin">-->
+<!--&lt;!&ndash;        <img class="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">&ndash;&gt;-->
+
+<!--        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>-->
+<!--        <label for="inputEmail" class="sr-only">Email address</label>-->
+<!--        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">-->
+<!--        <label for="inputPassword" class="sr-only">Password</label>-->
+<!--        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">-->
+<!--&lt;!&ndash;        <div class="checkbox mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="checkbox" value="remember-me"> Remember me&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>-->
+<!--    </form>-->
+
+
+<!--    </body>-->
+
+
+
+<body>
+    <div class="min-vh-100 d-flex align-items-center">
+        <div class="center-block">
+            <div class="min-vw-100 d-flex justify-content-center">
+<!--                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">-->
+
+
+<!--                <form th:action="@{/GUI/login}" method="post">-->
+<!--                    <h1 class="h3 mb-3 font-weight-normal text-center">Please sign in</h1>-->
+<!--                    <label for="inputEmail" class="mb-0">Email address</label>-->
+<!--                    <input type="text" id="inputEmail" class="form-control">-->
+<!--                    <label for="inputPassword" class="mb-0 mt-3">Password</label>-->
+<!--                    <input type="password" id="inputPassword" class="form-control" >-->
+<!--                    <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Sign in</button>-->
+<!--                    <button class="btn btn-lg btn-danger btn-block mt-3" th:href="@{/logout}">Log out</button>-->
+<!--                </form>-->
+
+                    <form th:action="@{/GUI/login}" method="post">
+                        <h1 class="h3 mb-3 font-weight-normal text-center">Please sign in</h1>
+                        <div>
+                            <label> User Name : <input type="text" name="username" class="form-control"/> </label>
+                        </div>
+                        <div>
+                            <label> Password: <input type="password" name="password" class="form-control"/> </label>
+                        </div>
+<!--                        <label for="inputEmail" class="mb-0">Email address</label>-->
+<!--                        <input type="text" id="inputEmail" class="form-control">-->
+<!--                        <label for="inputPassword" class="mb-0 mt-3">Password</label>-->
+<!--                        <input type="password" id="inputPassword" class="form-control" >-->
+
+                        <div><input class="btn btn-lg btn-primary btn-block mt-3" type="submit" value="Sign In"/></div>
+<!--                        <a class="btn btn-lg btn-danger btn-block mt-3" th:href="@{/logout}" role="button">Logout</a>-->
+
+<!--                        <form action="/GUI/logout" method="post">-->
+<!--                            <input type="submit" value="Sign Out"/>-->
+<!--                        </form>-->
+
+                        <div th:if="${param.error}" class="text-danger">
+                            Invalid username and password.
+                        </div>
+                        <div th:if="${param.logout}" class="text-danger">
+                            You have been logged out.
+                        </div>
+
+                    </form>
+
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<!--            <form th:action="@{/GUI/login}" method="post">-->
+<!--                <div><label> User Name : <input type="text" name="username"/> </label></div>-->
+<!--                <div><label> Password: <input type="password" name="password"/> </label></div>-->
+<!--                <div><input type="submit" value="Sign In"/></div>-->
+<!--                <a class="btn btn-primary m-2" th:href="@{/logout}" role="button">Logout</a>-->
+<!--            </form>-->
+
+
+
+
+<!--<body>-->
+<!--<div id="login">-->
+<!--    <h3 class="text-center text-white pt-5">Login form</h3>-->
+<!--    <div class="container">-->
+<!--        <div id="login-row" class="row justify-content-center align-items-center">-->
+<!--            <div id="login-column" class="col-md-6 bg-secondary">-->
+<!--                <div id="login-box" class="col-md-12">-->
+<!--                    <form id="login-form" class="form" action="" method="post">-->
+<!--                        <h3 class="text-center text-info">Login</h3>-->
+<!--                        <div class="form-group">-->
+<!--                            <label for="username" class="text-info">Username:</label><br>-->
+<!--                            <input type="text" name="username" id="username" class="form-control">-->
+<!--                        </div>-->
+<!--                        <div class="form-group">-->
+<!--                            <label for="password" class="text-info">Password:</label><br>-->
+<!--                            <input type="text" name="password" id="password" class="form-control">-->
+<!--                        </div>-->
+<!--                        <div class="form-group">-->
+<!--&lt;!&ndash;                            <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>&ndash;&gt;-->
+<!--                            <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">-->
+<!--                            <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">-->
+<!--                        </div>-->
+<!--                        <div id="register-link" class="text-right">-->
+<!--                            <a href="#" class="text-info">Register here</a>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+
+
+
+
+
+
+<!--    <div class="row">-->
+<!--        <div class="col-md-8">-->
+<!--            <h1 class="blog-post-title text-center m-lg-5 m-xl-5 ">Login User</h1>-->
+
+<!--            <div th:if="${param.error}">-->
+<!--                Invalid username and password.-->
+<!--            </div>-->
+<!--            <div th:if="${param.logout}">-->
+<!--                You have been logged out.-->
+<!--            </div>-->
+<!--            <form th:action="@{/GUI/login}" method="post">-->
+<!--                <div><label> User Name : <input type="text" name="username"/> </label></div>-->
+<!--                <div><label> Password: <input type="password" name="password"/> </label></div>-->
+<!--                <div><input type="submit" value="Sign In"/></div>-->
+<!--                <a class="btn btn-primary m-2" th:href="@{/logout}" role="button">Logout</a>-->
+<!--            </form>-->
+
+<!--        </div>-->
+<!--        <div class="col-md-4 bg-info">-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--</body>-->
+</html>
+

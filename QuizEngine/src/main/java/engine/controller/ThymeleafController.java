@@ -1,6 +1,5 @@
 package engine.controller;
 
-import engine.User;
 import engine.compleatedQuiz.CompletedQuizPagination;
 import engine.config.SpringSecurityConfig;
 import engine.quiz.Answer;
@@ -151,11 +150,17 @@ public class ThymeleafController {
     }
 
     //Get home page
-    @GetMapping(path = "/GUI/home")
+    @GetMapping(path = "/")
     public String getHomePage(Model model){
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
         return "Quiz/home";
     }
+//    //Post home page
+//    @PostMapping(path = "/")
+//    public String postHomePage(Model model){
+//        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+//        return "Quiz/home";
+//    }
 
     //Get all solved Quizzes pagination
     @GetMapping("/GUI/AllSolvedQuizzes")
@@ -215,18 +220,25 @@ public class ThymeleafController {
 //        return "Quiz/deleteQuizResult";
     }
 
-    //Get login page
-    @GetMapping("/GUI/login")
-    public String getLoginPage(Model model) {
-        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
-        return "Quiz/login";
-    }
-    //Post login result
-    @PostMapping("/GUI/loginResult")
-    public String postLoginResult(Model model) {
-        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
-        return "Quiz/loginSuccess";
-    }
+//    //Get login page
+//    @GetMapping("/GUI/login")
+//    public String getLoginPage(Model model) {
+//        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+//        return "Quiz/loginMy";
+//    }
+//    //Post login result
+//    @PostMapping("/GUI/loginResult")
+//    public String postLoginResult(Model model) {
+//        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+//        return "Quiz/loginSuccess";
+//    }
+
+//    //Get logout page
+//    @PostMapping("/GUI/logout")
+//    public String getLoginPage(Model model) {
+//        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+//        return "redirect:/";
+//    }
 
     //Get registration page
     @GetMapping("/GUI/registration")

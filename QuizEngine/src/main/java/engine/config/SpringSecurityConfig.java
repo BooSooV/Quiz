@@ -39,16 +39,31 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.httpBasic()
                 .and()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/api/quizzes").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET, "/api/quizzes/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET, "/api/quizzes").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/api/quizzes/**/solve").hasRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/api/quizzes/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET, "/api/quizzes/completed").hasRole("ADMIN")
+                    .authorizeRequests()
+                    .antMatchers(HttpMethod.POST, "/api/quizzes").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.GET, "/api/quizzes/**").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.GET, "/api/quizzes").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.POST, "/api/quizzes/**/solve").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.DELETE, "/api/quizzes/**").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.GET, "/api/quizzes/completed").hasRole("ADMIN")
                 .and()
-                .csrf().disable()
-                .logout().permitAll();
+                    .formLogin()
+                    .loginPage("/GUI/login")
+                    .permitAll()
+                .and()
+                    .csrf().disable()
+                    .logout().permitAll();
+//        http
+//                .authorizeRequests()
+//                .antMatchers("/", "/registration").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll();
     }
 }
 
