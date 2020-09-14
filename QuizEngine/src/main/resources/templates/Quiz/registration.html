@@ -2,61 +2,48 @@
 <html  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Bootstrap уроки</title>
+    <title>Registration</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
- </head>
-<body class="bg-secondary">
-<div class="container bg-light min-vh-100">
+</head>
 
-    <div class="row">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 100%">
-            <a class="navbar-brand" href="#">JQuiz</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/GUI/home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/GUI/quizzes/?page=0">Quizzes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/GUI/addQuiz">Add Quiz</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/GUI/AllSolvedQuizzes/?page=0">Solved Quizzes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/GUI/deleteQuizPage">Delete Quiz</a>
-                    </li>
-                </ul>
-                <form class="form-inline mt-2 mt-md-0">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/GUI/login">Login</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/GUI/registration">Registration</a>
-                        </li>
-                    </ul>
-                    <span class="text-info" th:utext="${user}"></span>
-                </form>
-            </div>
-        </nav>
-    </div>
+<body>
+<div class="min-vh-100 d-flex align-items-center">
+    <div class="center-block">
+        <div class="min-vw-100 d-flex justify-content-center">
 
+            <form th:action="@{/GUI/registrationResult}" method="post">
+                <h1 class="h3 mb-3 font-weight-normal text-center">Registration</h1>
+                <div  class="mb-3" th:object="${user}">
+                    <label> User Name : <input type="text" th:field="*{email}" name="username" class="form-control"/> </label>
+                </div>
+                <div th:object="${user}">
+                    <label> Password: <input type="text" th:field="*{password}" name="password" class="form-control"/> </label>
+                </div>
+                <div><input class="btn btn-lg btn-primary btn-block mt-3" type="submit" value="Register"/></div>
+                <div><a class="btn btn-lg btn-primary btn-block mt-3" href="/GUI/login" role="button" >Login page</a></div>
+<!--                <a class="btn btn-primary m-2" th:href="@{/GUI/quizzesSolve/(id=*{quizIdAndTitleList[__${itemStat.index}__].id})}" role="button">Solve</a>-->
+                <div th:if="${mesToUser.equals('Registration successfully')}" class="text-success">
+                    Registration successfully
+                </div>
+                <div th:if="${mesToUser.equals('This user already registered')}" class="text-danger">
+                    This user already registered
+                </div>
+                <div th:if="${mesToUser.equals('Not correct login or password')}" class="text-danger">
+                    Not correct login or password
+                </div>
+<!--                <span th:if="${mesToUser.equals('Quiz not exist')}">-->
+<!--                                            <label class="text-danger" >Quiz not exist</label>-->
+<!--                                        </span>-->
+<!--                <span th:if="${mesToUser.equals('Its not your Quiz')}">-->
+<!--                                            <label class="text-danger" >Its not your Quiz</label>-->
+<!--                                        </span>-->
+<!--                <span th:if="${mesToUser.equals('Quiz deleted')}">-->
+<!--                                            <label class="text-danger" >Quiz deleted</label>-->
+<!--                                        </span>-->
 
-
-
-    <div class="row">
-        <div class="col-md-8">
-            <h1 class="blog-post-title text-center m-lg-5 m-xl-5 ">Registration User</h1>
-        </div>
-        <div class="col-md-4 bg-info">
+            </form>
 
         </div>
     </div>
@@ -68,3 +55,22 @@
 </body>
 </html>
 
+
+<!--model.addAttribute("mesToUser", new String("Registration successfully"));-->
+<!--model.addAttribute("mesToUser", new String("This user already registered"));-->
+<!--model.addAttribute("mesToUser", new String("Not correct login or password"));-->
+
+<!--<span th:if="${mesToUser.equals('Quiz not exist')}">-->
+<!--                            <label class="text-danger" for="inGroup">Quiz not exist</label>-->
+<!--                        </span>-->
+<!--<span th:if="${mesToUser.equals('Its not your Quiz')}">-->
+<!--                            <label class="text-danger" for="inGroup">Its not your Quiz</label>-->
+<!--                        </span>-->
+<!--<span th:if="${mesToUser.equals('Quiz deleted')}">-->
+<!--                            <label class="text-danger" for="inGroup">Quiz deleted</label>-->
+<!--                        </span>-->
+
+<!--<div class="mb-3" th:object="${quiz}" >-->
+<!--    <label for="title">Title</label>-->
+<!--    <input type="text" th:field="*{title}" class="form-control" id="title" >-->
+<!--</div>-->

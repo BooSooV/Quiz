@@ -1,5 +1,6 @@
 package engine.controller;
 
+import engine.User;
 import engine.compleatedQuiz.CompletedQuizPagination;
 import engine.config.SpringSecurityConfig;
 import engine.quiz.Answer;
@@ -22,6 +23,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Controller
 public class ThymeleafController {
@@ -243,20 +245,56 @@ public class ThymeleafController {
     //Get registration page
     @GetMapping("/GUI/registration")
     public String getRegistrationPage(Model model) {
-        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("user", new User("",""));
+        model.addAttribute("mesToUser", new String(""));
+        model.addAttribute("userName", SecurityContextHolder.getContext().getAuthentication().getName());
         return "Quiz/registration";
     }
     //Post registration result
     @PostMapping("/GUI/registrationResult")
-    public String postRegistrationResult(Model model) {
-        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
-        return "Quiz/registrationSuccess";
+    public String postRegistrationResult(@ModelAttribute User user, Model model) throws Exception  {
+        System.out.println(user);
+
+        if(Pattern.matches(".*@.*\\..*", user.email) && user.password.length() > 4) {
+            if(userService.getUserByEmail(user.email).email == "null") {
+                userService.SaveUser(user);
+                springSecurityConfig.configure(authenticationManagerBuilder);
+    //            throw new ResponseStatusException(HttpStatus.OK);
+                model.addAttribute("mesToUser", new String("Registration successfully"));
+                model.addAttribute("userName", SecurityContextHolder.getContext().getAuthentication().getName());
+                return "Quiz/registration";
+            } else {
+    //            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+                model.addAttribute("mesToUser", new String("This user already registered"));
+                model.addAttribute("userName", SecurityContextHolder.getContext().getAuthentication().getName());
+                return "Quiz/registration";
+            }
+        } else {
+    //        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            model.addAttribute("mesToUser", new String("Not correct login or password"));
+            model.addAttribute("userName", SecurityContextHolder.getContext().getAuthentication().getName());
+            return "Quiz/registration";
+        }
     }
+
+
 
 
 }
 
 
+//    if(Pattern.matches(".*@.*\\..*", user.email) && user.password.length() > 4) {
+//        if(userService.getUserByEmail(user.email).email == "null") {
+//            userService.SaveUser(user);
+//            springSecurityConfig.configure(authenticationManagerBuilder);
+//
+//            throw new ResponseStatusException(HttpStatus.OK);
+//        } else {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+//        }
+//    } else {
+//        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+//    }
 
 
 

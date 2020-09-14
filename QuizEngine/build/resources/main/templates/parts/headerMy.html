@@ -1,0 +1,59 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap уроки</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div th:fragment="header(user, namePage)">
+        <div class="row" >
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 100%">
+            <a class="navbar-brand" href="#">JQuiz</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <span th:if="${namePage.equals('home')}">                   <li class="nav-item active"><a class="nav-link" href="/">                       Home</a></li></span>
+                    <span th:unless="${namePage.equals('home')}">               <li class="nav-item">       <a class="nav-link" href="/">                       Home</a></li></span>
+
+                    <span th:if="${namePage.equals('quizzes')}">                <li class="nav-item active"><a class="nav-link" href="/GUI/quizzes/?page=0">            Quizzes</a></li></span>
+                    <span th:unless="${namePage.equals('quizzes')}">            <li class="nav-item">       <a class="nav-link" href="/GUI/quizzes/?page=0">            Quizzes</a></li></span>
+
+                    <span th:if="${namePage.equals('addQuiz')}">                <li class="nav-item active"><a class="nav-link" href="/GUI/addQuiz">                    Add Quiz</a></li></span>
+                    <span th:unless="${namePage.equals('addQuiz')}">            <li class="nav-item">       <a class="nav-link" href="/GUI/addQuiz">                    Add Quiz</a></li></span>
+
+                    <span th:if="${namePage.equals('AllSolvedQuizzes')}">       <li class="nav-item active"><a class="nav-link" href="/GUI/AllSolvedQuizzes/?page=0">   Solved Quizzes</a></li></span>
+                    <span th:unless="${namePage.equals('AllSolvedQuizzes')}">   <li class="nav-item">       <a class="nav-link" href="/GUI/AllSolvedQuizzes/?page=0">   Solved Quizzes</a></li></span>
+
+                    <span th:if="${namePage.equals('deleteQuizPage')}">         <li class="nav-item active"><a class="nav-link" href="/GUI/deleteQuizPage">             Delete Quiz</a></li></span>
+                    <span th:unless="${namePage.equals('deleteQuizPage')}">     <li class="nav-item">       <a class="nav-link" href="/GUI/deleteQuizPage">             Delete Quiz</a></li></span>
+
+<!--                    <li class="nav-item">   <a class="nav-link" href="/GUI/quizzes/?page=0">            Quizzes</a> </li>-->
+<!--                    <li class="nav-item">   <a class="nav-link" href="/GUI/addQuiz">                    Add Quiz</a></li>-->
+<!--                    <li class="nav-item">   <a class="nav-link" href="/GUI/AllSolvedQuizzes/?page=0">   Solved Quizzes</a></li>-->
+<!--                    <li class="nav-item">   <a class="nav-link" href="/GUI/deleteQuizPage">             Delete Quiz</a></li>-->
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">   <a class="nav-link text-danger" href="/logout">   Logout</a></li>
+                        <li class="nav-item">   <a class="nav-link" href="/GUI/login">                  Login</a></li>
+                        <li class="nav-item">   <a class="nav-link" href="/GUI/registration">           Registration</a></li>
+                        <li class="nav-item">   <div class="text-info my-2" th:utext="${user}">         UserName</div></li>
+                    </ul>
+                </form>
+            </div>
+        </nav>
+    </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
