@@ -1,5 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -41,10 +39,17 @@
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
                     <ul class="navbar-nav">
-                        <li class="nav-item">   <a class="nav-link text-danger" href="/logout">   Logout</a></li>
-                        <li class="nav-item">   <a class="nav-link" href="/GUI/login">                  Login</a></li>
-                        <li class="nav-item">   <a class="nav-link" href="/GUI/registration">           Registration</a></li>
-                        <li class="nav-item">   <div class="text-info my-2" th:utext="${user}">         UserName</div></li>
+                        <span th:if="${user.equals('anonymousUser')}">         <li class="nav-item">   <a class="nav-link" href="/GUI/login">                   Login</a></li></span>
+                        <span th:if="${user.equals('anonymousUser')}">         <li class="nav-item">   <a class="nav-link" href="/GUI/registration">            Registration</a></li></span>
+
+                        <span th:unless="${user.equals('anonymousUser')}">     <li class="nav-item">   <a class="nav-link text-danger" href="/logout">          Logout</a></li></span>
+                        <span th:unless="${user.equals('anonymousUser')}">     <li class="nav-item">   <div class="text-info my-2" th:utext="${user}">          UserName</div></li></span>
+
+
+                        <!--                        <li class="nav-item">   <a class="nav-link text-danger" href="/logout">   Logout</a></li>-->
+<!--                        <li class="nav-item">   <a class="nav-link" href="/GUI/login">                  Login</a></li>-->
+<!--                        <li class="nav-item">   <a class="nav-link" href="/GUI/registration">           Registration</a></li>-->
+<!--                        <li class="nav-item">   <div class="text-info my-2" th:utext="${user}">         UserName</div></li>-->
                     </ul>
                 </form>
             </div>

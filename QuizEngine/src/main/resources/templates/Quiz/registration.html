@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <title>Registration</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
@@ -12,7 +11,6 @@
 <div class="min-vh-100 d-flex align-items-center">
     <div class="center-block">
         <div class="min-vw-100 d-flex justify-content-center">
-
             <form th:action="@{/GUI/registrationResult}" method="post">
                 <h1 class="h3 mb-3 font-weight-normal text-center">Registration</h1>
                 <div  class="mb-3" th:object="${user}">
@@ -23,7 +21,6 @@
                 </div>
                 <div><input class="btn btn-lg btn-primary btn-block mt-3" type="submit" value="Register"/></div>
                 <div><a class="btn btn-lg btn-primary btn-block mt-3" href="/GUI/login" role="button" >Login page</a></div>
-<!--                <a class="btn btn-primary m-2" th:href="@{/GUI/quizzesSolve/(id=*{quizIdAndTitleList[__${itemStat.index}__].id})}" role="button">Solve</a>-->
                 <div th:if="${mesToUser.equals('Registration successfully')}" class="text-success">
                     Registration successfully
                 </div>
@@ -33,18 +30,7 @@
                 <div th:if="${mesToUser.equals('Not correct login or password')}" class="text-danger">
                     Not correct login or password
                 </div>
-<!--                <span th:if="${mesToUser.equals('Quiz not exist')}">-->
-<!--                                            <label class="text-danger" >Quiz not exist</label>-->
-<!--                                        </span>-->
-<!--                <span th:if="${mesToUser.equals('Its not your Quiz')}">-->
-<!--                                            <label class="text-danger" >Its not your Quiz</label>-->
-<!--                                        </span>-->
-<!--                <span th:if="${mesToUser.equals('Quiz deleted')}">-->
-<!--                                            <label class="text-danger" >Quiz deleted</label>-->
-<!--                                        </span>-->
-
             </form>
-
         </div>
     </div>
 </div>
@@ -54,23 +40,3 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-<!--model.addAttribute("mesToUser", new String("Registration successfully"));-->
-<!--model.addAttribute("mesToUser", new String("This user already registered"));-->
-<!--model.addAttribute("mesToUser", new String("Not correct login or password"));-->
-
-<!--<span th:if="${mesToUser.equals('Quiz not exist')}">-->
-<!--                            <label class="text-danger" for="inGroup">Quiz not exist</label>-->
-<!--                        </span>-->
-<!--<span th:if="${mesToUser.equals('Its not your Quiz')}">-->
-<!--                            <label class="text-danger" for="inGroup">Its not your Quiz</label>-->
-<!--                        </span>-->
-<!--<span th:if="${mesToUser.equals('Quiz deleted')}">-->
-<!--                            <label class="text-danger" for="inGroup">Quiz deleted</label>-->
-<!--                        </span>-->
-
-<!--<div class="mb-3" th:object="${quiz}" >-->
-<!--    <label for="title">Title</label>-->
-<!--    <input type="text" th:field="*{title}" class="form-control" id="title" >-->
-<!--</div>-->
