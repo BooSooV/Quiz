@@ -1,6 +1,5 @@
 package engine.quiz;
 
-import engine.quiz.Quiz;
 //import engine.quiz.QuizToUser;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,8 +36,8 @@ public class QuizPagenation {
         List<Quiz> allQuizzesFromBase = page.getContent();
         for (Quiz quiz : allQuizzesFromBase) {
             ArrayList<String> optionsForUser = new ArrayList();
-            for (var quizOptions : quiz.options) {
-                optionsForUser.add(quizOptions.option);
+            for (var quizOptions : quiz.optionOfQuizs) {
+                optionsForUser.add(quizOptions.optionOfQuiz);
             }
             this.content.add(quiz);
         }

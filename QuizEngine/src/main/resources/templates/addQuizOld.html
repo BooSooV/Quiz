@@ -12,9 +12,9 @@
         <p>text: <input type="text" th:field="*{text}" /></p>
 
         <h3>options_______________answers</h3>
-        <tr th:each="options, itemStat : *{options}">
+        <tr th:each="optionOfQuizs, itemStat : *{optionOfQuizs}">
             <p>
-            <td><input th:field="*{options[__${itemStat.index}__].option}" /></td>
+            <td><input th:field="*{optionOfQuizs[__${itemStat.index}__].option}" /></td>
             <td><input th:field="*{answers[__${itemStat.index}__].answer}" /></td>
             </p>
         </tr>

@@ -16,7 +16,7 @@ public class Quiz {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn()
-    public List<Option> options = new ArrayList<>();
+    public List<OptionOfQuiz> optionOfQuizs = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn()
@@ -26,7 +26,7 @@ public class Quiz {
         this.title = title;
         this.text = text;
         this.creator = null;
-        this.options = options;
+        this.optionOfQuizs = options;
         this.answers = answers;
     }
 
@@ -42,7 +42,7 @@ public class Quiz {
     public boolean isCorrect() {
         if(this.title != null && this.text != null) {
             if(!this.title.equals("") && !this.text.equals("")) {
-                if (this.options.size() >= 2) {
+                if (this.optionOfQuizs.size() >= 2) {
                     return true;
                 }
             }
@@ -57,7 +57,7 @@ public class Quiz {
                 "title: " + title + "\n" +
                 "text: " + text + "\n" +
                 "creator: " + creator + "\n" +
-                "options: " + options + "\n"+
+                "options: " + optionOfQuizs + "\n"+
                 "answers: " + answers);
     }
 
@@ -94,12 +94,12 @@ public class Quiz {
         this.creator = creator;
     }
 
-    public List<Option> getOptions() {
-        return options;
+    public List<OptionOfQuiz> getOptionOfQuizs() {
+        return optionOfQuizs;
     }
 
-    public void setOptions(List<Option> options) {
-        this.options = options;
+    public void setOptionOfQuizs(List<OptionOfQuiz> optionOfQuizs) {
+        this.optionOfQuizs = optionOfQuizs;
     }
 
     public List<Answer> getAnswers() {

@@ -4,7 +4,7 @@ import engine.User;
 import engine.compleatedQuiz.CompletedQuizPagination;
 import engine.config.SpringSecurityConfig;
 import engine.quiz.Answer;
-import engine.quiz.Option;
+import engine.quiz.OptionOfQuiz;
 import engine.quiz.QuizPagenation;
 import engine.service.QuizService;
 import engine.service.UserService;
@@ -48,7 +48,7 @@ public class ThymeleafController {
         Quiz quiz = new Quiz();
         ArrayListBooleanWrapper arrayListBooleanWrapper = new ArrayListBooleanWrapper();
         for (int i = 0; i <= 3; i++) {
-            quiz.options.add(new Option());
+            quiz.optionOfQuizs.add(new OptionOfQuiz());
             //quiz.answers.add(new Answer());
             arrayListBooleanWrapper.addBoolean(new BooleanWrapper());
         }
