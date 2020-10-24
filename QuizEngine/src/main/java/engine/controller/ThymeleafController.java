@@ -48,7 +48,7 @@ public class ThymeleafController {
         Quiz quiz = new Quiz();
         ArrayListBooleanWrapper arrayListBooleanWrapper = new ArrayListBooleanWrapper();
         for (int i = 0; i <= 3; i++) {
-            quiz.optionOfQuizs.add(new OptionOfQuiz());
+            quiz.optionOfQuizzes.add(new OptionOfQuiz());
             //quiz.answers.add(new Answer());
             arrayListBooleanWrapper.addBoolean(new BooleanWrapper());
         }

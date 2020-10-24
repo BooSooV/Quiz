@@ -36,7 +36,7 @@ public class QuizPagenation {
         List<Quiz> allQuizzesFromBase = page.getContent();
         for (Quiz quiz : allQuizzesFromBase) {
             ArrayList<String> optionsForUser = new ArrayList();
-            for (var quizOptions : quiz.optionOfQuizs) {
+            for (var quizOptions : quiz.optionOfQuizzes) {
                 optionsForUser.add(quizOptions.optionOfQuiz);
             }
             this.content.add(quiz);
