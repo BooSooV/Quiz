@@ -1,3 +1,4 @@
 # Quiz
  My test progekt
- This service can receave and send quizzes
+ This is a Java quiz site
+ To start, download this catalog and collect it using Gradle
