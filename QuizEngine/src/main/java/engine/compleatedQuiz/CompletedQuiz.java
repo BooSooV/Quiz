@@ -21,7 +21,6 @@ public class CompletedQuiz {
     public CompletedQuiz(int quizId) {
         LocalDateTime now = LocalDateTime.now();
         this.quizId = quizId;
-        //this.completedAt = completedAt;
         this.completedAt = (now.getYear() + "-" + now.getMonthValue() + "-" + now.getDayOfMonth()
                 + "T" + now.getHour() + ":" + now.getMinute() + ":" + now.getSecond() + "." + now.getNano()).toString();
     }

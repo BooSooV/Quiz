@@ -2,7 +2,7 @@
 <html  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Bootstrap уроки</title>
+    <title>Login</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -22,6 +22,8 @@
                         <label> Password: <input type="password" name="password" class="form-control"/> </label>
                     </div>
                     <div><input class="btn btn-lg btn-primary btn-block mt-3" type="submit" value="Sign In"/></div>
+                    <div><a class="btn btn-lg btn-primary btn-block mt-3" href="/GUI/registration" role="button" >Registration page</a></div>
+                    <div><a class="btn btn-lg btn-dark btn-block mt-3" href="/" role="button" >Go home</a></div>
                     <div th:if="${param.error}" class="text-danger">
                         Invalid username or password.
                     </div>

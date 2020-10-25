@@ -13,6 +13,3 @@ public interface QuizRepository extends PagingAndSortingRepository<Quiz, Integer
 }
 
 
-//public interface QuizRepository extends CrudRepository<QuizForStore, Integer> {
-//}
-

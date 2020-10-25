@@ -2,7 +2,7 @@
 <html  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Bootstrap уроки</title>
+    <title>Solved quizzes</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -33,20 +33,22 @@
                         </div>
                     </tr>
                 </div>
-                <div th:with="firstPer=${currentPage}">
-                    <div th:with="firstPer=${completedQuizzes.totalPages}">
-                        <tr th:each="quizIdAndTitleList, itemStat : *{#numbers.sequence(1, firstPer)}">
+<!--                <div th:with="firstPer=${currentPage}">-->
+                    <div th:with="totalPages=${completedQuizzes.totalPages}">
+                        <tr th:each="quizIdAndTitleList, itemStat : *{#numbers.sequence(1, totalPages)}">
                             <td>
-                                <span th:if="${currentPage} == __${itemStat.index}__">
-                                    <a class="btn btn-primary mb-5" th:href="@{/GUI/AllSolvedQuizzes/(page=${itemStat.index})}" role="button"><span th:utext="__${itemStat.index}__"></span></a>
-                                </span>
-                                <span th:unless="${currentPage} == __${itemStat.index}__">
-                                    <a class="btn btn-secondary mb-5" th:href="@{/GUI/AllSolvedQuizzes/(page=${itemStat.index})}" role="button"><span th:utext="__${itemStat.index}__"></span></a>
+                                <span th:if="${totalPages} > 1">
+                                    <span th:if="${currentPage} == __${itemStat.index}__">
+                                        <a class="btn btn-primary mb-5" th:href="@{/GUI/AllSolvedQuizzes/(page=${itemStat.index})}" role="button"><span th:utext="__${itemStat.index}__"></span></a>
+                                    </span>
+                                    <span th:unless="${currentPage} == __${itemStat.index}__">
+                                        <a class="btn btn-secondary mb-5" th:href="@{/GUI/AllSolvedQuizzes/(page=${itemStat.index})}" role="button"><span th:utext="__${itemStat.index}__"></span></a>
+                                    </span>
                                 </span>
                             </td>
                         </tr>
                     </div>
-                </div>
+<!--                </div>-->
             </main>
         </div>
         <div class="col-md-4 bg-info">

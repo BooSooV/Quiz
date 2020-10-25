@@ -41,19 +41,6 @@ public class QuizService {
         Quiz quiz = quizRepository.findById(id).get();
         return quiz;
     }
-    /*
-        public QuizToUser getQuizById(int id) {
-        QuizToUser quizToUser = new QuizToUser();
-        quizToUser.id = quizRepository.findById(id).get().id;
-        quizToUser.text = quizRepository.findById(id).get().text;
-        quizToUser.title = quizRepository.findById(id).get().title;
-        for (var quizOptions : quizRepository.findById(id).get().options) {
-            quizToUser.options.add(quizOptions.option);
-        }
-
-        return quizToUser;
-    }
-     */
 
     public ArrayList getSortAnswerById(int id) {
         ArrayList answerFromRepository = new ArrayList<>();

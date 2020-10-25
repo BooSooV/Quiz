@@ -35,7 +35,6 @@ public class UserService {
         UserService userService = new UserService();
         User user = userService.getUserByEmail(userRepository, UsersEmail);
         Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(Sort.Direction.DESC, sortBy));
-        //Page<User> pagedResult = userRepository.findAll(paging);
         Page<CompletedQuiz> findBy = userRepository.findBy(user, paging);
         return findBy;
     }

@@ -25,8 +25,6 @@ import java.util.regex.Pattern;
 
 @RestController
 public class TaskController {
-    //private AnsToUser ansToUser = new AnsToUser();
-    //public UserService userServ = new UserService();
 
     @Autowired
     QuizService quizService;

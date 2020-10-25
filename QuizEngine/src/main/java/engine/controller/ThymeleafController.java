@@ -49,7 +49,6 @@ public class ThymeleafController {
         ArrayListBooleanWrapper arrayListBooleanWrapper = new ArrayListBooleanWrapper();
         for (int i = 0; i <= 3; i++) {
             quiz.options.add(new Option());
-            //quiz.answers.add(new Answer());
             arrayListBooleanWrapper.addBoolean(new BooleanWrapper());
         }
 
@@ -162,11 +161,18 @@ public class ThymeleafController {
     @GetMapping("/GUI/AllSolvedQuizzes")
     public String getAllSolvedQuizzes(@RequestParam String page, Model model) {
         String user = SecurityContextHolder.getContext().getAuthentication().getName();
-        CompletedQuizPagination completedQuizzes = new CompletedQuizPagination(userService.getUsersSolvedQuizzesPaging(user, Integer.parseInt(page), 10, "completed.completedAt"));
-        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
-        model.addAttribute("currentPage", Integer.parseInt(page));
-        model.addAttribute("completedQuizzes", completedQuizzes);
-        return "Quiz/allSolvedQuizzes";
+        if(!user.equals("anonymousUser")){
+            CompletedQuizPagination completedQuizzes = new CompletedQuizPagination(userService.getUsersSolvedQuizzesPaging(user, Integer.parseInt(page), 10, "completed.completedAt"));
+            model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+            model.addAttribute("currentPage", Integer.parseInt(page));
+            model.addAttribute("completedQuizzes", completedQuizzes);
+            System.out.println(completedQuizzes);
+            return "Quiz/allSolvedQuizzes";
+        } else {
+            model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+            model.addAttribute("currentPage", Integer.parseInt(page));
+            return "Quiz/registerFirst";
+        }
     }
 
     //Get delete quiz page
@@ -210,10 +216,6 @@ public class ThymeleafController {
             model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
             return "Quiz/deleteQuiz";
         }
-
-
-//        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
-//        return "Quiz/deleteQuizResult";
     }
 
     //Get registration page
@@ -234,25 +236,18 @@ public class ThymeleafController {
             if(userService.getUserByEmail(user.email).email == "null") {
                 userService.SaveUser(user);
                 springSecurityConfig.configure(authenticationManagerBuilder);
-    //            throw new ResponseStatusException(HttpStatus.OK);
                 model.addAttribute("mesToUser", new String("Registration successfully"));
                 model.addAttribute("userName", SecurityContextHolder.getContext().getAuthentication().getName());
                 return "Quiz/registration";
             } else {
-    //            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
                 model.addAttribute("mesToUser", new String("This user already registered"));
                 model.addAttribute("userName", SecurityContextHolder.getContext().getAuthentication().getName());
                 return "Quiz/registration";
             }
         } else {
-    //        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
             model.addAttribute("mesToUser", new String("Not correct login or password"));
             model.addAttribute("userName", SecurityContextHolder.getContext().getAuthentication().getName());
             return "Quiz/registration";
         }
     }
-
-
-
-
 }

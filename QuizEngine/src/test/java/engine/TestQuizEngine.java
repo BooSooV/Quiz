@@ -31,8 +31,6 @@ import java.util.List;
 @WithMockUser(value = "test@gmail.com", password = "secret",roles = "ADMIN")
 @TestPropertySource("/application-test.properties")
 @Sql(value = {"/clear-user-before.sql", "/quiz-before.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-//@Sql(value = {"/create-user-before.sql", "/messages-list-before.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-//@Sql(value = {"/messages-list-after.sql", "/create-user-after.sql"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class TestQuizEngine {
 
 

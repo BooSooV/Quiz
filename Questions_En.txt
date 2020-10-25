@@ -1,0 +1,71 @@
+What charactets can the name of a variable contain?
+	Numbers
+	Letters
+	$
+#
+
+What is not a primitive datatype
+	Integer
+char
+	String
+double
+
+Which data type conversion is guaranteed not to result in data loss?
+	bute -> int
+	short -> long
+long -> bute
+long -> double
+
+What is not a logical operator?
+&
+&&
+||
+	??
+
+What is not a cycle?
+for
+do-while
+	while-do
+while
+
+Choose OOP principles
+	Encapsulation
+	Polymorphism
+Serialization
+Centralization
+
+What is encapsulation?
+	Hiding fields and methods from incorrect use.
+Converting one data type to another.
+Super class extension.
+Converting program to bytecode.
+
+What is inheritance?
+	Getting fields and methods from the parent class.
+Inheritance from relatives.
+Obtaining a genetic code from parents.
+Converting one type of variables to another.
+
+What is the access level modifier?
+	private
+	public
+	protected
+final
+
+What is not a method of the Object class?
+clone
+equals
+	get
+	set
+
+What exceptions are checked?
+	SQLExeption
+IndexOutOfBoundsExeption
+	IOExeption
+ClassCastExeption
+
+What doesn't implement the Collection interface?
+ArrayList
+	HashMap
+LinkedList
+Treeset
