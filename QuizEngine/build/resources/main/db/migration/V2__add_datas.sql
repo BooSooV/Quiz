@@ -1,8 +1,5 @@
 insert into user(id, active, email, password, roles) values
-(1, 'true', 'test@gmail.com', 'secret', 'ROLE_ADMIN');
-
-
-
+(1, true, 'test@gmail.com', 'secret', 'ROLE_ADMIN');
 
 insert into quiz(id, creator, text, title) values
 (1, 'test@gmail.com', 'Select only tea drinks.', 'Tea drinks');

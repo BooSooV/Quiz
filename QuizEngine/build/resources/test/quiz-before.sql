@@ -1,13 +1,11 @@
 delete from answer;
-delete from option;
+delete from option_of_quiz;
 delete from quiz;
-
-
 
 insert into quiz(id, creator, text, title) values
 (1, 'test@gmail.com', 'Select only tea drinks.', 'Tea drinks');
 
-insert into option(option_id, option, options_id) values
+insert into option_of_quiz(option_id, option_of_quiz, option_of_quizs_id) values
 (1, 'black tea', 1),
 (2, 'green tea', 1),
 (3, 'Cappuccino', 1),

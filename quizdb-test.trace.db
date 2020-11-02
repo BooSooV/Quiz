@@ -1,0 +1,16 @@
+2020-11-02 16:52:52 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE ANSWER (
+            ANSWER_ID BIGINT NOT NULL,
+            ANSWER INTEGER,
+            ANSWERS_ID INTEGER,
+            PRIMARY KEY (ANSWER_ID)) ENGINE=[*]INNODB"; ожидалось "identifier"
+Syntax error in SQL statement "CREATE TABLE ANSWER (
+            ANSWER_ID BIGINT NOT NULL,
+            ANSWER INTEGER,
+            ANSWERS_ID INTEGER,
+            PRIMARY KEY (ANSWER_ID)) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+create table answer (
+            answer_id bigint not null,
+            answer integer,
+            answers_id integer,
+            primary key (answer_id)) engine=InnoDB [42001-200]
