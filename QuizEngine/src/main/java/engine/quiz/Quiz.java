@@ -9,24 +9,24 @@ public class Quiz {
 
     @Id
     @GeneratedValue
-    public int id;
-    public String title;
-    public String text;
-    public String creator;
+    private int id;
+    private String title;
+    private String text;
+    private String creator;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn()
-    public List<Option> options = new ArrayList<>();
+    private List<OptionOfQuiz> optionOfQuizzes = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn()
-    public List<Answer> answers = new ArrayList<>();
+    private List<Answer> answers = new ArrayList<>();
 
     public Quiz(String title, String text, List options, List answers) {
         this.title = title;
         this.text = text;
         this.creator = null;
-        this.options = options;
+        this.optionOfQuizzes = options;
         this.answers = answers;
     }
 
@@ -42,7 +42,7 @@ public class Quiz {
     public boolean isCorrect() {
         if(this.title != null && this.text != null) {
             if(!this.title.equals("") && !this.text.equals("")) {
-                if (this.options.size() >= 2) {
+                if (this.optionOfQuizzes.size() >= 2) {
                     return true;
                 }
             }
@@ -57,7 +57,7 @@ public class Quiz {
                 "title: " + title + "\n" +
                 "text: " + text + "\n" +
                 "creator: " + creator + "\n" +
-                "options: " + options + "\n"+
+                "options: " + optionOfQuizzes + "\n"+
                 "answers: " + answers);
     }
 
@@ -94,12 +94,16 @@ public class Quiz {
         this.creator = creator;
     }
 
-    public List<Option> getOptions() {
-        return options;
+    public List<OptionOfQuiz> getOptionOfQuizzes() {
+        return optionOfQuizzes;
     }
 
-    public void setOptions(List<Option> options) {
-        this.options = options;
+    public void setOptionOfQuizzes(List<OptionOfQuiz> optionOfQuizs) {
+        this.optionOfQuizzes = optionOfQuizs;
+    }
+
+    public void addOptionOfQuizzes(OptionOfQuiz optionOfQuizzes) {
+        this.optionOfQuizzes.add(optionOfQuizzes);
     }
 
     public List<Answer> getAnswers() {
@@ -108,5 +112,8 @@ public class Quiz {
 
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
+    }
+    public void addAnswer(Answer answer) {
+        this.answers.add(answer);
     }
 }

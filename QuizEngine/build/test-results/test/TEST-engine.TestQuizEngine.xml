@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="engine.TestQuizEngine" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-10-25T12:31:19" hostname="DESKTOP-R1TI04S" time="2.688">
+<testsuite name="engine.TestQuizEngine" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-11-03T10:12:19" hostname="DESKTOP-R1TI04S" time="3.658">
   <properties/>
-  <testcase name="addUser()" classname="engine.TestQuizEngine" time="1.121"/>
-  <testcase name="getAllQuizzesPaging()" classname="engine.TestQuizEngine" time="0.359"/>
-  <testcase name="solveQuiz()" classname="engine.TestQuizEngine" time="0.407"/>
-  <testcase name="CompletedQuizPagenation()" classname="engine.TestQuizEngine" time="0.155"/>
-  <testcase name="getQuizById()" classname="engine.TestQuizEngine" time="0.227"/>
-  <testcase name="sendQuiz()" classname="engine.TestQuizEngine" time="0.155"/>
-  <testcase name="deleteQuiz()" classname="engine.TestQuizEngine" time="0.161"/>
-  <system-out><![CDATA[15:30:59.934 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-15:31:00.037 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-15:31:00.175 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [engine.TestQuizEngine] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-15:31:00.217 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [engine.TestQuizEngine], using SpringBootContextLoader
-15:31:00.229 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [engine.TestQuizEngine]: class path resource [engine/TestQuizEngine-context.xml] does not exist
-15:31:00.232 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [engine.TestQuizEngine]: class path resource [engine/TestQuizEngineContext.groovy] does not exist
-15:31:00.233 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [engine.TestQuizEngine]: no resource found for suffixes {-context.xml, Context.groovy}.
-15:31:00.235 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [engine.TestQuizEngine]: TestQuizEngine does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-15:31:00.409 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [engine.TestQuizEngine]
-15:31:00.624 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\Sergey\IdeaProjects\MyOwnProjects\Quiz\QuizEngine\build\classes\java\main\engine\QuizEngine.class]
-15:31:00.631 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration engine.QuizEngine for test class engine.TestQuizEngine
-15:31:00.894 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [engine.TestQuizEngine]: using defaults.
-15:31:00.896 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-15:31:00.950 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@26c7cc4e, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@503efdc3, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@50fbccad, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5f00686d, org.springframework.test.context.support.DirtiesContextTestExecutionListener@473d6a7f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@604a57be, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6eda71be, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@32452f08, org.springframework.test.context.event.EventPublishingTestExecutionListener@1e87d5ad, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@2cc29664, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@11a845c3, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@a8e1591, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2a0483d0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@124d5142, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@41989895]
-15:31:00.960 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@314fffe3 testClass = TestQuizEngine, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@6bdc2c94 testClass = TestQuizEngine, locations = '{}', classes = '{class engine.QuizEngine}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{classpath:/application-test.properties}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@4b3fa0b3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@5d30c1c4, [ImportsContextCustomizer@70697a54 key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1b23afc5, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1c2488bc, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@72e045eb], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
-15:31:01.020 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
+  <testcase name="solveQuizWrongAnswer()" classname="engine.TestQuizEngine" time="1.795"/>
+  <testcase name="addUser()" classname="engine.TestQuizEngine" time="0.644"/>
+  <testcase name="getAllQuizzesPaging()" classname="engine.TestQuizEngine" time="0.123"/>
+  <testcase name="CompletedQuizPagenation()" classname="engine.TestQuizEngine" time="0.15"/>
+  <testcase name="solveQuizCorrectAnswer()" classname="engine.TestQuizEngine" time="0.382"/>
+  <testcase name="getQuizById()" classname="engine.TestQuizEngine" time="0.142"/>
+  <testcase name="sendQuiz()" classname="engine.TestQuizEngine" time="0.304"/>
+  <testcase name="deleteQuiz()" classname="engine.TestQuizEngine" time="0.099"/>
+  <system-out><![CDATA[13:11:51.319 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+13:11:51.380 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+13:11:51.483 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [engine.TestQuizEngine] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+13:11:51.542 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [engine.TestQuizEngine], using SpringBootContextLoader
+13:11:51.554 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [engine.TestQuizEngine]: class path resource [engine/TestQuizEngine-context.xml] does not exist
+13:11:51.555 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [engine.TestQuizEngine]: class path resource [engine/TestQuizEngineContext.groovy] does not exist
+13:11:51.556 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [engine.TestQuizEngine]: no resource found for suffixes {-context.xml, Context.groovy}.
+13:11:51.559 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [engine.TestQuizEngine]: TestQuizEngine does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+13:11:51.831 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [engine.TestQuizEngine]
+13:11:52.148 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\Sergey\IdeaProjects\MyOwnProjects\Quiz\QuizEngine\build\classes\java\main\engine\QuizEngine.class]
+13:11:52.156 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration engine.QuizEngine for test class engine.TestQuizEngine
+13:11:52.450 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [engine.TestQuizEngine]: using defaults.
+13:11:52.451 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+13:11:52.578 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@637db629, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6f1a6e05, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@441e739b, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@656a263b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6ba80841, org.springframework.test.context.transaction.TransactionalTestExecutionListener@57fe3977, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@60cb0ab8, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@5424a364, org.springframework.test.context.event.EventPublishingTestExecutionListener@7f6553a1, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@5976e8bb, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@61d0b7e7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@101e073a, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@45b3b6c3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2b6eadfe, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4fe548fb]
+13:11:52.619 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@242e3db testClass = TestQuizEngine, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@25ce1958 testClass = TestQuizEngine, locations = '{}', classes = '{class engine.QuizEngine}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{classpath:/application-test.properties}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@4b3fa0b3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@285150cf, [ImportsContextCustomizer@1ea99809 key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1884efa6, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@4504c37e, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@3f655922], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+13:11:52.831 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -33,33 +34,77 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.1.RELEASE)
 
-2020-10-25 15:31:02.029  INFO 1300 --- [    Test worker] engine.TestQuizEngine                    : Starting TestQuizEngine on DESKTOP-R1TI04S with PID 1300 (started by Sergey in C:\Users\Sergey\IdeaProjects\MyOwnProjects\Quiz\QuizEngine)
-2020-10-25 15:31:02.037  INFO 1300 --- [    Test worker] engine.TestQuizEngine                    : No active profile set, falling back to default profiles: default
-2020-10-25 15:31:05.442  INFO 1300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-10-25 15:31:05.634  INFO 1300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 163ms. Found 2 repository interfaces.
-2020-10-25 15:31:06.749  INFO 1300 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-25 15:31:07.449  INFO 1300 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-10-25 15:31:07.716  INFO 1300 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.8.Final}
-2020-10-25 15:31:08.171  INFO 1300 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-10-25 15:31:08.514  INFO 1300 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-10-25 15:31:09.146  INFO 1300 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-10-25 15:31:09.216  INFO 1300 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2020-10-25 15:31:11.865  INFO 1300 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-10-25 15:31:11.891  INFO 1300 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-10-25 15:31:12.156  WARN 1300 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-10-25 15:31:15.071  INFO 1300 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-25 15:31:18.141  INFO 1300 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1cf5a20, org.springframework.security.web.context.SecurityContextPersistenceFilter@41a4ed31, org.springframework.security.web.header.HeaderWriterFilter@601d9835, org.springframework.security.web.authentication.logout.LogoutFilter@18e54215, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@a8c3a68, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5a46a4b5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2359692b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2d71f7d6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6cf9098b, org.springframework.security.web.session.SessionManagementFilter@698b0e6e, org.springframework.security.web.access.ExceptionTranslationFilter@63fb6ba0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@523252c5]
-2020-10-25 15:31:18.243  INFO 1300 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../quizdb-test'
-2020-10-25 15:31:18.549  INFO 1300 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2020-10-25 15:31:18.550  INFO 1300 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2020-10-25 15:31:18.581  INFO 1300 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-2020-10-25 15:31:18.700  INFO 1300 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 149 ms
-2020-10-25 15:31:18.861  INFO 1300 --- [    Test worker] engine.TestQuizEngine                    : Started TestQuizEngine in 17.813 seconds (JVM running for 21.407)
+2020-11-03 13:11:54.456  INFO 9576 --- [    Test worker] engine.TestQuizEngine                    : Starting TestQuizEngine on DESKTOP-R1TI04S with PID 9576 (started by Sergey in C:\Users\Sergey\IdeaProjects\MyOwnProjects\Quiz\QuizEngine)
+2020-11-03 13:11:54.463  INFO 9576 --- [    Test worker] engine.TestQuizEngine                    : No active profile set, falling back to default profiles: default
+2020-11-03 13:11:59.171  INFO 9576 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-11-03 13:11:59.532  INFO 9576 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 294ms. Found 2 repository interfaces.
+2020-11-03 13:12:02.071  INFO 9576 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-03 13:12:02.850  INFO 9576 --- [    Test worker] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.5.7 by Redgate
+2020-11-03 13:12:02.908  INFO 9576 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-11-03 13:12:04.241  INFO 9576 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-11-03 13:12:04.428  INFO 9576 --- [    Test worker] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:mysql://localhost:3306/mysql_javaquiz_tests (MySQL 8.0)
+2020-11-03 13:12:04.937  INFO 9576 --- [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.149s)
+2020-11-03 13:12:04.963  INFO 9576 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema `mysql_javaquiz`: 2
+2020-11-03 13:12:04.965  INFO 9576 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Schema `mysql_javaquiz` is up to date. No migration necessary.
+2020-11-03 13:12:05.397  INFO 9576 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-11-03 13:12:05.774  INFO 9576 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.8.Final}
+2020-11-03 13:12:06.582  INFO 9576 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-11-03 13:12:07.127  INFO 9576 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-11-03 13:12:10.026  INFO 9576 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-11-03 13:12:10.046  INFO 9576 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-11-03 13:12:10.510  WARN 9576 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-11-03 13:12:14.903  INFO 9576 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-03 13:12:18.040  INFO 9576 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7449e6b7, org.springframework.security.web.context.SecurityContextPersistenceFilter@13ef4e0c, org.springframework.security.web.header.HeaderWriterFilter@2e8ee0ee, org.springframework.security.web.authentication.logout.LogoutFilter@220d5552, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6b078e31, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@73d03eec, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@576b08b5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@590bef6e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1e714b19, org.springframework.security.web.session.SessionManagementFilter@2de165bc, org.springframework.security.web.access.ExceptionTranslationFilter@5a0d763, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5543b0af]
+2020-11-03 13:12:18.588  INFO 9576 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2020-11-03 13:12:18.589  INFO 9576 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-11-03 13:12:18.667  INFO 9576 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 15 endpoint(s) beneath base path '/actuator'
+2020-11-03 13:12:18.841  INFO 9576 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 251 ms
+2020-11-03 13:12:19.100  INFO 9576 --- [    Test worker] engine.TestQuizEngine                    : Started TestQuizEngine in 26.154 seconds (JVM running for 30.663)
+Hibernate: select quiz0_.id as id1_3_0_, quiz0_.creator as creator2_3_0_, quiz0_.text as text3_3_0_, quiz0_.title as title4_3_0_ from quiz quiz0_ where quiz0_.id=?
+Hibernate: select answers0_.answers_id as answers_3_0_0_, answers0_.answer_id as answer_i1_0_0_, answers0_.answer_id as answer_i1_0_1_, answers0_.answer as answer2_0_1_ from answer answers0_ where answers0_.answers_id=?
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/quizzes/1/solve
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8"]
+             Body = {"answer":[7,1]}
+    Session Attrs = {SPRING_SECURITY_CONTEXT=org.springframework.security.core.context.SecurityContextImpl@9e8d6351: Authentication: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@9e8d6351: Principal: org.springframework.security.core.userdetails.User@17d5e403: Username: test@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: null; Granted Authorities: ROLE_ADMIN}
+
+Handler:
+             Type = engine.controller.TaskController
+           Method = engine.controller.TaskController#solveQuiz(Integer, Hashtable, HttpServletResponse)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 406
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"success":false,"feedback":"Wrong answer! Please, try again."}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
 Hibernate: select user0_.id as id1_4_, user0_.active as active2_4_, user0_.email as email3_4_, user0_.password as password4_4_, user0_.roles as roles5_4_ from user user0_
-Hibernate: call next value for hibernate_sequence
+Hibernate: select next_val as id_val from hibernate_sequence for update
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
 Hibernate: insert into user (active, email, password, roles, id) values (?, ?, ?, ?, ?)
 Hibernate: select quiz0_.id as id1_3_, quiz0_.creator as creator2_3_, quiz0_.text as text3_3_, quiz0_.title as title4_3_ from quiz quiz0_ order by quiz0_.id asc limit ?
-Hibernate: select options0_.options_id as options_3_2_0_, options0_.option_id as option_i1_2_0_, options0_.option_id as option_i1_2_1_, options0_.option as option2_2_1_ from option options0_ where options0_.options_id=?
+Hibernate: select optionofqu0_.option_of_quizzes_id as option_o3_2_0_, optionofqu0_.option_id as option_i1_2_0_, optionofqu0_.option_id as option_i1_2_1_, optionofqu0_.option_of_quiz as option_o2_2_1_ from option_of_quiz optionofqu0_ where optionofqu0_.option_of_quizzes_id=?
 Hibernate: select answers0_.answers_id as answers_3_0_0_, answers0_.answer_id as answer_i1_0_0_, answers0_.answer_id as answer_i1_0_1_, answers0_.answer as answer2_0_1_ from answer answers0_ where answers0_.answers_id=?
 
 MockHttpServletRequest:
@@ -94,52 +139,7 @@ MockHttpServletResponse:
     Error message = null
           Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
      Content type = application/json
-             Body = {"totalPages":1,"totalElements":1,"last":true,"first":true,"sort":{"sorted":true,"unsorted":false,"empty":false},"number":0,"numberOfElements":1,"size":10,"empty":false,"pageable":{"sort":{"sorted":true,"unsorted":false,"empty":false},"offset":0,"pageSize":10,"pageNumber":0,"paged":true,"unpaged":false},"content":[{"id":1,"title":"Tea drinks","text":"Select only tea drinks.","creator":"test@gmail.com","options":[{"optionId":1,"option":"black tea"},{"optionId":2,"option":"green tea"},{"optionId":3,"option":"Cappuccino"},{"optionId":4,"option":"Sprite"}],"answers":[{"answerId":1,"answer":0},{"answerId":2,"answer":1}],"correct":true}]}
-    Forwarded URL = null
-   Redirected URL = null
-          Cookies = []
-Hibernate: select quiz0_.id as id1_3_0_, quiz0_.creator as creator2_3_0_, quiz0_.text as text3_3_0_, quiz0_.title as title4_3_0_ from quiz quiz0_ where quiz0_.id=?
-Hibernate: select answers0_.answers_id as answers_3_0_0_, answers0_.answer_id as answer_i1_0_0_, answers0_.answer_id as answer_i1_0_1_, answers0_.answer as answer2_0_1_ from answer answers0_ where answers0_.answers_id=?
-Hibernate: select user0_.id as id1_4_, user0_.active as active2_4_, user0_.email as email3_4_, user0_.password as password4_4_, user0_.roles as roles5_4_ from user user0_
-Hibernate: select completed0_.completed_id as complete4_1_0_, completed0_.id as id1_1_0_, completed0_.id as id1_1_1_, completed0_.completed_at as complete2_1_1_, completed0_.quiz_id as quiz_id3_1_1_ from completed_quiz completed0_ where completed0_.completed_id=?
-Hibernate: call next value for hibernate_sequence
-Hibernate: insert into completed_quiz (completed_at, quiz_id, id) values (?, ?, ?)
-Hibernate: update completed_quiz set completed_id=? where id=?
-1
-
-MockHttpServletRequest:
-      HTTP Method = POST
-      Request URI = /api/quizzes/1/solve
-       Parameters = {}
-          Headers = [Content-Type:"application/json;charset=UTF-8"]
-             Body = {"answer":[0,1]}
-    Session Attrs = {SPRING_SECURITY_CONTEXT=org.springframework.security.core.context.SecurityContextImpl@9e8d6351: Authentication: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@9e8d6351: Principal: org.springframework.security.core.userdetails.User@17d5e403: Username: test@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: null; Granted Authorities: ROLE_ADMIN}
-
-Handler:
-             Type = engine.controller.TaskController
-           Method = engine.controller.TaskController#solveQuiz(Integer, Hashtable)
-
-Async:
-    Async started = false
-     Async result = null
-
-Resolved Exception:
-             Type = null
-
-ModelAndView:
-        View name = null
-             View = null
-            Model = null
-
-FlashMap:
-       Attributes = null
-
-MockHttpServletResponse:
-           Status = 200
-    Error message = null
-          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
-     Content type = application/json
-             Body = {"success":true,"feedback":"Congratulations, you're right!"}
+             Body = {"totalPages":1,"totalElements":1,"last":true,"first":true,"sort":{"sorted":true,"unsorted":false,"empty":false},"number":0,"numberOfElements":1,"size":10,"empty":false,"pageable":{"sort":{"sorted":true,"unsorted":false,"empty":false},"offset":0,"pageSize":10,"pageNumber":0,"unpaged":false,"paged":true},"content":[{"id":1,"title":"Tea drinks","text":"Select only tea drinks.","creator":"test@gmail.com","optionOfQuizzes":[{"optionId":1,"optionOfQuiz":"black tea"},{"optionId":2,"optionOfQuiz":"green tea"},{"optionId":3,"optionOfQuiz":"Cappuccino"},{"optionId":4,"optionOfQuiz":"Sprite"}],"answers":[{"answerId":1,"answer":0},{"answerId":2,"answer":1}],"correct":true}]}
     Forwarded URL = null
    Redirected URL = null
           Cookies = []
@@ -178,12 +178,58 @@ MockHttpServletResponse:
     Error message = null
           Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
      Content type = application/json
-             Body = {"totalPages":1,"totalElements":1,"last":true,"first":true,"sort":{"sorted":true,"unsorted":false,"empty":false},"number":0,"numberOfElements":1,"size":10,"empty":false,"pageable":{"sort":{"sorted":true,"unsorted":false,"empty":false},"offset":0,"pageSize":10,"pageNumber":0,"paged":true,"unpaged":false},"content":[{"id":1,"quizId":1,"completedAt":"2020-8-21T13:3:57.46320200"}]}
+             Body = {"totalPages":1,"totalElements":1,"last":true,"first":true,"sort":{"sorted":true,"unsorted":false,"empty":false},"number":0,"numberOfElements":1,"size":10,"empty":false,"pageable":{"sort":{"sorted":true,"unsorted":false,"empty":false},"offset":0,"pageSize":10,"pageNumber":0,"unpaged":false,"paged":true},"content":[{"id":1,"quizId":1,"completedAt":"2020-8-21T13:3:57.46320200"}]}
     Forwarded URL = null
    Redirected URL = null
           Cookies = []
 Hibernate: select quiz0_.id as id1_3_0_, quiz0_.creator as creator2_3_0_, quiz0_.text as text3_3_0_, quiz0_.title as title4_3_0_ from quiz quiz0_ where quiz0_.id=?
-Hibernate: select options0_.options_id as options_3_2_0_, options0_.option_id as option_i1_2_0_, options0_.option_id as option_i1_2_1_, options0_.option as option2_2_1_ from option options0_ where options0_.options_id=?
+Hibernate: select answers0_.answers_id as answers_3_0_0_, answers0_.answer_id as answer_i1_0_0_, answers0_.answer_id as answer_i1_0_1_, answers0_.answer as answer2_0_1_ from answer answers0_ where answers0_.answers_id=?
+Hibernate: select user0_.id as id1_4_, user0_.active as active2_4_, user0_.email as email3_4_, user0_.password as password4_4_, user0_.roles as roles5_4_ from user user0_
+Hibernate: select completed0_.completed_id as complete4_1_0_, completed0_.id as id1_1_0_, completed0_.id as id1_1_1_, completed0_.completed_at as complete2_1_1_, completed0_.quiz_id as quiz_id3_1_1_ from completed_quiz completed0_ where completed0_.completed_id=?
+Hibernate: select next_val as id_val from hibernate_sequence for update
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+Hibernate: insert into completed_quiz (completed_at, quiz_id, id) values (?, ?, ?)
+Hibernate: update completed_quiz set completed_id=? where id=?
+1
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/quizzes/1/solve
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8"]
+             Body = {"answer":[0,1]}
+    Session Attrs = {SPRING_SECURITY_CONTEXT=org.springframework.security.core.context.SecurityContextImpl@9e8d6351: Authentication: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@9e8d6351: Principal: org.springframework.security.core.userdetails.User@17d5e403: Username: test@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: null; Granted Authorities: ROLE_ADMIN}
+
+Handler:
+             Type = engine.controller.TaskController
+           Method = engine.controller.TaskController#solveQuiz(Integer, Hashtable, HttpServletResponse)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"success":true,"feedback":"Congratulations, you're right!"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+Hibernate: select quiz0_.id as id1_3_0_, quiz0_.creator as creator2_3_0_, quiz0_.text as text3_3_0_, quiz0_.title as title4_3_0_ from quiz quiz0_ where quiz0_.id=?
+Hibernate: select optionofqu0_.option_of_quizzes_id as option_o3_2_0_, optionofqu0_.option_id as option_i1_2_0_, optionofqu0_.option_id as option_i1_2_1_, optionofqu0_.option_of_quiz as option_o2_2_1_ from option_of_quiz optionofqu0_ where optionofqu0_.option_of_quizzes_id=?
 
 MockHttpServletRequest:
       HTTP Method = GET
@@ -217,41 +263,48 @@ MockHttpServletResponse:
     Error message = null
           Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
      Content type = application/json
-             Body = {"id":1,"title":"Tea drinks","text":"Select only tea drinks.","creator":"test@gmail.com","options":[{"optionId":1,"option":"black tea"},{"optionId":2,"option":"green tea"},{"optionId":3,"option":"Cappuccino"},{"optionId":4,"option":"Sprite"}],"answers":null,"correct":true}
+             Body = {"id":1,"title":"Tea drinks","text":"Select only tea drinks.","creator":"test@gmail.com","optionOfQuizzes":[{"optionId":1,"optionOfQuiz":"black tea"},{"optionId":2,"optionOfQuiz":"green tea"},{"optionId":3,"optionOfQuiz":"Cappuccino"},{"optionId":4,"optionOfQuiz":"Sprite"}],"answers":null,"correct":true}
     Forwarded URL = null
    Redirected URL = null
           Cookies = []
-Hibernate: call next value for hibernate_sequence
-Hibernate: call next value for hibernate_sequence
-Hibernate: call next value for hibernate_sequence
-Hibernate: call next value for hibernate_sequence
-Hibernate: call next value for hibernate_sequence
-Hibernate: call next value for hibernate_sequence
-Hibernate: call next value for hibernate_sequence
+Hibernate: select next_val as id_val from hibernate_sequence for update
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+Hibernate: select next_val as id_val from hibernate_sequence for update
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+Hibernate: select next_val as id_val from hibernate_sequence for update
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+Hibernate: select next_val as id_val from hibernate_sequence for update
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+Hibernate: select next_val as id_val from hibernate_sequence for update
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+Hibernate: select next_val as id_val from hibernate_sequence for update
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+Hibernate: select next_val as id_val from hibernate_sequence for update
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
 Hibernate: insert into quiz (creator, text, title, id) values (?, ?, ?, ?)
 Hibernate: insert into answer (answer, answer_id) values (?, ?)
 Hibernate: insert into answer (answer, answer_id) values (?, ?)
-Hibernate: insert into option (option, option_id) values (?, ?)
-Hibernate: insert into option (option, option_id) values (?, ?)
-Hibernate: insert into option (option, option_id) values (?, ?)
-Hibernate: insert into option (option, option_id) values (?, ?)
+Hibernate: insert into option_of_quiz (option_of_quiz, option_id) values (?, ?)
+Hibernate: insert into option_of_quiz (option_of_quiz, option_id) values (?, ?)
+Hibernate: insert into option_of_quiz (option_of_quiz, option_id) values (?, ?)
+Hibernate: insert into option_of_quiz (option_of_quiz, option_id) values (?, ?)
 Hibernate: update answer set answers_id=? where answer_id=?
 Hibernate: update answer set answers_id=? where answer_id=?
-Hibernate: update option set options_id=? where option_id=?
-Hibernate: update option set options_id=? where option_id=?
-Hibernate: update option set options_id=? where option_id=?
-Hibernate: update option set options_id=? where option_id=?
+Hibernate: update option_of_quiz set option_of_quizzes_id=? where option_id=?
+Hibernate: update option_of_quiz set option_of_quizzes_id=? where option_id=?
+Hibernate: update option_of_quiz set option_of_quizzes_id=? where option_id=?
+Hibernate: update option_of_quiz set option_of_quizzes_id=? where option_id=?
 Hibernate: select quiz0_.id as id1_3_0_, quiz0_.creator as creator2_3_0_, quiz0_.text as text3_3_0_, quiz0_.title as title4_3_0_ from quiz quiz0_ where quiz0_.id=?
 Hibernate: select answers0_.answers_id as answers_3_0_0_, answers0_.answer_id as answer_i1_0_0_, answers0_.answer_id as answer_i1_0_1_, answers0_.answer as answer2_0_1_ from answer answers0_ where answers0_.answers_id=?
-Hibernate: select options0_.options_id as options_3_2_0_, options0_.option_id as option_i1_2_0_, options0_.option_id as option_i1_2_1_, options0_.option as option2_2_1_ from option options0_ where options0_.options_id=?
+Hibernate: select optionofqu0_.option_of_quizzes_id as option_o3_2_0_, optionofqu0_.option_id as option_i1_2_0_, optionofqu0_.option_id as option_i1_2_1_, optionofqu0_.option_of_quiz as option_o2_2_1_ from option_of_quiz optionofqu0_ where optionofqu0_.option_of_quizzes_id=?
 Hibernate: update answer set answers_id=null where answers_id=?
-Hibernate: update option set options_id=null where options_id=?
+Hibernate: update option_of_quiz set option_of_quizzes_id=null where option_of_quizzes_id=?
 Hibernate: delete from answer where answer_id=?
 Hibernate: delete from answer where answer_id=?
-Hibernate: delete from option where option_id=?
-Hibernate: delete from option where option_id=?
-Hibernate: delete from option where option_id=?
-Hibernate: delete from option where option_id=?
+Hibernate: delete from option_of_quiz where option_id=?
+Hibernate: delete from option_of_quiz where option_id=?
+Hibernate: delete from option_of_quiz where option_id=?
+Hibernate: delete from option_of_quiz where option_id=?
 Hibernate: delete from quiz where id=?
 
 MockHttpServletRequest:

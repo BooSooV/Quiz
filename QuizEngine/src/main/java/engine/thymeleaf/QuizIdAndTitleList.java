@@ -6,7 +6,6 @@ import java.util.List;
 public class QuizIdAndTitleList {
     private List<QuizIdAndTitle> quizIdAndTitleList = new ArrayList<>();
 
-
     public QuizIdAndTitleList(List<QuizIdAndTitle> quizIdAndTitleList) {
         this.quizIdAndTitleList = quizIdAndTitleList;
     }

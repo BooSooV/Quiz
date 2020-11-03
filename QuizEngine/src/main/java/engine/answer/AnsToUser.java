@@ -1,8 +1,8 @@
 package engine.answer;
 
 public class AnsToUser {
-    public boolean success;
-    public String feedback;
+    private boolean success;
+    private String feedback;
 
     public AnsToUser(boolean correct) {
         success = correct;
@@ -14,5 +14,20 @@ public class AnsToUser {
     }
     public AnsToUser() {}
 
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
 }
 

@@ -6,23 +6,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Option {
-
-
+public class OptionOfQuiz {
 
     @Id
     @GeneratedValue
-    public long optionId;
+    private long optionId;
 
     @Column
-    public String option;
+    private String optionOfQuiz;
 
-
-
-    public Option(String option) {
-        this.option = option;
+    public OptionOfQuiz(String optionOfQuiz) {
+        this.optionOfQuiz = optionOfQuiz;
     }
-    public Option() {
+    public OptionOfQuiz() {
     }
 
     public void setOptionId(long optionId) {
@@ -33,16 +29,16 @@ public class Option {
         return optionId;
     }
 
-    public void setOption(String option) {
-        this.option = option;
+    public void setOptionOfQuiz(String option) {
+        this.optionOfQuiz = option;
     }
 
-    public String getOption() {
-        return option;
+    public String getOptionOfQuiz() {
+        return optionOfQuiz;
     }
 
     @Override
     public String toString() {
-        return String.format(option);
+        return String.format(optionOfQuiz);
     }
 }

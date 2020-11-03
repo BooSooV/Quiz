@@ -11,12 +11,12 @@ public class CompletedQuiz {
 
     @Id
     @GeneratedValue
-    public long id;
+    private long id;
 
     @Column
-    public int quizId;
+    private int quizId;
     @Column
-    public String completedAt;
+    private String completedAt;
 
     public CompletedQuiz(int quizId) {
         LocalDateTime now = LocalDateTime.now();

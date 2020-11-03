@@ -42,4 +42,14 @@ dependencies {
         useJUnitPlatform()
     }
 
+//    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.16'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.21'
+
+//    compile group: 'org.flywaydb', name: 'flyway-core', version: '7.0.4'
+    compile group: 'org.flywaydb', name: 'flyway-core', version: '6.5.7'
+//    compile group: 'org.flywaydb', name: 'flyway-core', version: '7.0.0'
+
+// https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1'
+
 }

@@ -10,10 +10,10 @@ public class Answer {
 
     @Id
     @GeneratedValue
-    public long answerId;
+    private long answerId;
 
     @Column
-    public Integer answer;
+    private Integer answer;
 
     public Answer(Integer answer) {
         this.answer = answer;
