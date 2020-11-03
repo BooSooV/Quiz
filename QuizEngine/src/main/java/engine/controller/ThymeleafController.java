@@ -162,12 +162,20 @@ public class ThymeleafController {
     @GetMapping("/GUI/AllSolvedQuizzes")
     public String getAllSolvedQuizzes(@RequestParam String page, Model model) {
         String user = SecurityContextHolder.getContext().getAuthentication().getName();
-        CompletedQuizPagination completedQuizzes = new CompletedQuizPagination(userService.getUsersSolvedQuizzesPaging(user, Integer.parseInt(page), 10, "completed.completedAt"));
-        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
-        model.addAttribute("currentPage", Integer.parseInt(page));
-        model.addAttribute("completedQuizzes", completedQuizzes);
-        return "Quiz/allSolvedQuizzes";
+        if(!user.equals("anonymousUser")){
+            CompletedQuizPagination completedQuizzes = new CompletedQuizPagination(userService.getUsersSolvedQuizzesPaging(user, Integer.parseInt(page), 10, "completed.completedAt"));
+            model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+            model.addAttribute("currentPage", Integer.parseInt(page));
+            model.addAttribute("completedQuizzes", completedQuizzes);
+            System.out.println(completedQuizzes);
+            return "Quiz/allSolvedQuizzes";
+        } else {
+            model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+            model.addAttribute("currentPage", Integer.parseInt(page));
+            return "Quiz/registerFirst";
+        }
     }
+
 
     //Get delete quiz page
     @GetMapping("/GUI/deleteQuizPage")
