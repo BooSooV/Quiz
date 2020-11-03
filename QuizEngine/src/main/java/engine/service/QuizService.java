@@ -1,5 +1,6 @@
 package engine.service;
 
+import engine.quiz.Answer;
 import engine.quiz.Quiz;
 //import engine.quiz.QuizToUser;
 import engine.repos.QuizRepository;
@@ -58,15 +59,15 @@ public class QuizService {
     public ArrayList getSortAnswerById(int id) {
         ArrayList answerFromRepository = new ArrayList<>();
 
-        for (var quizAnswers : quizRepository.findById(id).get().answers) {
-            answerFromRepository.add(quizAnswers.answer);
+        for (Answer quizAnswers : quizRepository.findById(id).get().getAnswers()) {
+            answerFromRepository.add(quizAnswers.getAnswer());
         }
         Collections.sort(answerFromRepository);
         return answerFromRepository;
     }
 
     public String getCreatorById(int id) {
-        return quizRepository.findById(id).get().creator;
+        return quizRepository.findById(id).get().getCreator();
     }
 
     public void deleteQuizById(int id) {

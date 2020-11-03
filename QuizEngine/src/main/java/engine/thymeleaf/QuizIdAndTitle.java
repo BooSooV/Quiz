@@ -1,8 +1,8 @@
 package engine.thymeleaf;
 
 public class QuizIdAndTitle {
-    public int id;
-    public String title;
+    private int id;
+    private String title;
 
     public QuizIdAndTitle(int id, String title) {
         this.id = id;

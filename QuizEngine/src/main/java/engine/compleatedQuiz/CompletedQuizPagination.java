@@ -10,17 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompletedQuizPagination {
-    public int totalPages;
-    public long totalElements;
-    public boolean last;
-    public boolean first;
-    public Sort sort;
-    public int number;
-    public int numberOfElements;
-    public int size;
-    public boolean empty;
-    public Pageable pageable;
-    public List<CompletedQuiz> content = new ArrayList<>();
+    private int totalPages;
+    private long totalElements;
+    private boolean last;
+    private boolean first;
+    private Sort sort;
+    private int number;
+    private int numberOfElements;
+    private int size;
+    private boolean empty;
+    private Pageable pageable;
+    private List<CompletedQuiz> content = new ArrayList<>();
 
 
 

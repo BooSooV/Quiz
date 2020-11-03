@@ -8,8 +8,10 @@ import engine.quiz.QuizPagenation;
 import engine.quiz.*;
 import engine.service.QuizService;
 import engine.service.UserService;
+//import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +24,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.*;
 import java.util.regex.Pattern;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
 
 @RestController
 public class TaskController {
@@ -73,7 +79,7 @@ public class TaskController {
     @PostMapping(path = "/api/quizzes")
     public Quiz addQuiz(@RequestBody Quiz quiz){
         if(quiz.isCorrect()) {
-            quiz.creator = SecurityContextHolder.getContext().getAuthentication().getName();
+            quiz.setCreator(SecurityContextHolder.getContext().getAuthentication().getName());
             quizService.SaveOrUpdateQuiz(quiz);
             return quiz;
         }
@@ -87,7 +93,7 @@ public class TaskController {
         try {
             //Integer id = Integer.parseInt(idS);
             Quiz quiz = quizService.getQuizById(Integer.parseInt(idS));
-            quiz.answers = null;
+            quiz.setAnswers(null);
             return quiz;
         }
         catch (Exception excep) {
@@ -104,9 +110,11 @@ public class TaskController {
     }
 
 
+
+
     //Solve a Quiz
     @PostMapping(path = "/api/quizzes/{id}/solve")
-    public AnsToUser solveQuiz(@PathVariable Integer id, @RequestBody Hashtable answerFromUser){
+    public AnsToUser solveQuiz(@PathVariable Integer id, @RequestBody Hashtable answerFromUser,@Context final HttpServletResponse response){
         ArrayList<Integer> answerFromRepository;
 
         try {
@@ -117,8 +125,10 @@ public class TaskController {
 
         if (answerFromUser.get("answer").equals(answerFromRepository)) {
             userService.addCompleteQuiz(id, SecurityContextHolder.getContext().getAuthentication().getName());
+            response.setStatus(HttpServletResponse.SC_OK);
             return new AnsToUser(true);
         } else {
+            response.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
             return new AnsToUser(false);
         }
     }

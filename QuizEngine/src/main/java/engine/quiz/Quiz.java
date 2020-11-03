@@ -9,18 +9,18 @@ public class Quiz {
 
     @Id
     @GeneratedValue
-    public int id;
-    public String title;
-    public String text;
-    public String creator;
+    private int id;
+    private String title;
+    private String text;
+    private String creator;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn()
-    public List<OptionOfQuiz> optionOfQuizzes = new ArrayList<>();
+    private List<OptionOfQuiz> optionOfQuizzes = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn()
-    public List<Answer> answers = new ArrayList<>();
+    private List<Answer> answers = new ArrayList<>();
 
     public Quiz(String title, String text, List options, List answers) {
         this.title = title;
@@ -102,11 +102,18 @@ public class Quiz {
         this.optionOfQuizzes = optionOfQuizs;
     }
 
+    public void addOptionOfQuizzes(OptionOfQuiz optionOfQuizzes) {
+        this.optionOfQuizzes.add(optionOfQuizzes);
+    }
+
     public List<Answer> getAnswers() {
         return answers;
     }
 
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
+    }
+    public void addAnswer(Answer answer) {
+        this.answers.add(answer);
     }
 }

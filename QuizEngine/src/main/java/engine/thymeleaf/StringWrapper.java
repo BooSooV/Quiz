@@ -1,7 +1,7 @@
 package engine.thymeleaf;
 
 public class StringWrapper {
-    public String str = new String();
+    private String str = new String();
 
     public StringWrapper(String str) {
         this.str = str;

@@ -91,7 +91,7 @@ public class TestQuizEngine {
     }
 
     @Test
-    public void solveQuiz() throws Exception {
+    public void solveQuizCorrectAnswer() throws Exception {
         List answer = new ArrayList();
         answer.add(0);
         answer.add(1);
@@ -103,9 +103,21 @@ public class TestQuizEngine {
                 .content(objectMapper.writeValueAsString(answerFromUser)))
                 .andDo(print())
                 .andExpect(status().isOk());
-
     }
+    @Test
+    public void solveQuizWrongAnswer() throws Exception {
+        List answer = new ArrayList();
+        answer.add(7);
+        answer.add(1);
+        Hashtable answerFromUser = new Hashtable();
+        answerFromUser.put("answer", answer);
 
+        this.mockMvc.perform(post("/api/quizzes/1/solve")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(answerFromUser)))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
     @Test
     public void CompletedQuizPagenation() throws Exception {
         this.mockMvc.perform(get("/api/quizzes/completed")

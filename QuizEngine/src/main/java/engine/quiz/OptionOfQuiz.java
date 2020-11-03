@@ -8,16 +8,12 @@ import javax.persistence.Id;
 @Entity
 public class OptionOfQuiz {
 
-
-
     @Id
     @GeneratedValue
-    public long optionId;
+    private long optionId;
 
     @Column
-    public String optionOfQuiz;
-
-
+    private String optionOfQuiz;
 
     public OptionOfQuiz(String optionOfQuiz) {
         this.optionOfQuiz = optionOfQuiz;
