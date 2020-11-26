@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class QuizEngine {
     public static void main(String[] args) {
         SpringApplication.run(QuizEngine.class, args);
+        System.out.println();
     }
 }
 
